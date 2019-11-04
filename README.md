@@ -10,7 +10,7 @@
 ● Inputs : Age, Height, Weight, Active-level, diseases <br><br>
 ● Outputs : 1) Meal prep. recommendations for three weeks. 2) Nutrient Balance Analysis report of each week diet-plan
 
-
-[Main_page]
+<br><br>
+MAIN PAGE
 ![메인페이지](./img/메인페이지.PNG)
 
