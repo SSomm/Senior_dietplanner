@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       {{ fontawesome_html() }}
+    <title>食의 고수</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+<!-- JS -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!--    <script src="{{ url_for('static', filename='script.js') }}" type="text/js"> </script>-->
+
+    <style type="text/css">
+
+    </style>
+<script>
+    $(document).ready(function(){
+
+         $('.check_btn').on('click', function(){
+             var gender=$('input:radio[name="gender"]:checked').val();
+             var age=$('.age_iput').val();
+             var height=$('.height_input').val();
+             var weight=$('.weight_input').val();
+             var activelevel=$('.activelevel option:selected').val();
+             var disease=new Array();
+             $('.disease_info').each(function(){
+                if($(this).is(':checked')==true){
+                    disease.push($(this).val());
+                }
+             });
+
+            if(gender=='' || age==''|| height==''|| weight==''||activelevel=='' ){
+                alert('성별, 나이, 신장, 체중, 활동수준을 반드시 입력하셔야 합니다.');
+                return false;
+            }else{
+                location.href='/test';
+            }
+});
+    //고혈압 이미지 클릭시
+    $(document).on("click", ".tension", function(){
+        if($(".all_wrap").css("display")=="none"){
+            $(".all_wrap").show();
+            $(".hi_news").show();
+        }
+    });
+    //모달 닫기 클릭시
+    $(".cloe").on("click", function(){
+        $(".all_wrap").hide();
+        $(".hi_news").hide();
+
+    });
+    //당뇨
+     $(document).on("click", ".diabete", function(){
+        if($(".all_wrap").css("display")=="none"){
+            $(".all_wrap").show();
+            $(".diabetes_news").show();
+        }
+    });
+    //모달 닫기 클릭시
+    $(".cloe1").on("click", function(){
+        $(".all_wrap").hide();
+        $(".diabetes_news").hide();
+
+    });
+    //고지혈증
+    $(document).on("click", ".highfat", function(){
+        if($(".all_wrap").css("display")=="none"){
+            $(".all_wrap").show();
+            $(".highfat_news").show();
+        }
+    });
+    //모달 닫기 클릭시
+    $(".cloe2").on("click", function(){
+        $(".all_wrap").hide();
+        $(".highfat_news").hide();
+
+    });
+
+
+
+         });
+
+</script>
+  </head>
+  <body>
+    <div class="hi_news">
+        <div class='hi_newsin'>
+            <button class="cloe">X</button>
+         <h3 > 고혈압시의 식사요령 </h3><br>
+            <h4> • 체중조절</h4>
+           <p> o 비만하거나 체중이 과다하다면 혈압감소를 위해 체중을 줄여야 합니다.<br>
+            o 불필요한 외식이나 간식을 먼저 줄이도록 하십시오.<br>
+            o 식사를 거르지 않고 반드시 1일 3회 하십시오.<br>
+            o 밥 량은 약간 줄이고 야채 등의 반찬을 다양하게 드십시오.
+         </p><br>
+          <h4> • 염분조절</h4>
+          <p>
+            o 고혈압 환자가 염분 섭취를 1/3정도로 줄이면 수축기 혈압4.9mmHg, 이완기혈압 2.6mmHg이 감소됩니다.<br>
+            o 일반적으로 1일 6g 이하로 제한합니다.<br>
+            o 염분 제한을 위해서는 찌개, 국 등의 국물, 염장식품(김치, 장아찌, 젓갈), 가공식품(라면, 소세지) 섭취를 줄이고 싱겁게 드십시오.
+         </p><br>
+            <h4> • 알코올 제한</h4>
+         <p>
+            o 과다한 알코올 섭취(4잔 이상)는 혈압을 상승시키므로 알코올 섭취는 제한합니다.<br>
+            o 일반적으로 남자는 1일 2잔, 여자는 1잔 이하로 제한합니다.
+         </p><br>
+              <h4> • 무기질 섭취 (칼륨, 칼슘, 마그네슘</h4>
+         <p>o 무기질이 많은 야채와 과일을 충분히 섭취하면 혈압을 감소시킵니다.<br>
+            o 야채는 1일 6접시, 과일은 1일 1-2회 충분히 섭취하십시오. 흰밥 대신 무기질이 많은 잡곡밥으로 드십시오. 칼슘 공급을 위해 저지방 유제품을 1일 1회 이상 섭취 합니다.
+         </p>
+        </div>
+
+    </div>
+
+      <div class='diabetes_news'>
+           <div class='dia_newsin'>
+               <button class="cloe1">X</button>
+         <h3 > 당뇨병시의 식사요령 </h3><br>
+            <h4> • 당뇨병 식사요법의 8가지 기본 원칙</h4>
+         <p>
+             • 꼭 처방된 식사량을 지켜서 섭취합니다. <br>
+             • 3끼 식사는 규칙적으로 정해진 시각에 합니다. <br>
+            • 음식의 간은 되도록 자극적이지 않고 싱겁게 합니다. <br>
+            • 육류를 조리할 때에는 껍질이나 지방은 제거한 후 사용하고 버터, 생크림 등의 지방 식품의 섭취를 줄입니다. <br>
+            • 외식을 할 때에는 설탕을 많이 사용한 음식이나 튀긴 음식, 중국 음식, 성분을 알 수 없는 식품 등은 피합니다. <br>
+            • 기름양을 줄이기 위해 조리법 중 튀김이나 전 보다는 볶음, 구이, 찜, 조림 등의 방법을 선 택 합니다. <br>
+            • 섬유소가 풍부한 식품을 충분히 섭취합니다. <br>
+            • (예, 흰밥 대신 현미밥이나 잡곡밥으로, 식빵 대신 통밀빵으로, 녹즙이나 쥬스보다는 생야채나 생과일, 해조류로…) <br>
+            • 평상시 피해야 할 식 품 들은 꼭 염두에 둡니다. <br>
+            • (설탕(흑설탕.백설탕), 껌, 콜라.사이다, 말린 과일(건포도.곶감.대추), 꿀, 케익, 과자, 시럽, 파이, 잼, 과일통조림, 사탕, 젤리, 아이스크림, 술 등)
+
+         </p><br>
+          <h4> • 저혈당이 올 땐 이렇게 하세요</h4>
+         <p>•	저혈당이란 혈당이 정상치 이하로 내려간 상태로서 식사, 운동, 약물요법의 균형이 깨질 때 발생합니다.<br>
+            •	즉, 인슐린의 주사량이 식사량에 비해 많거나 정해진 시각에 식사를 하지 않았거나 굶었을때, 과격한 운동을 했을 때 일어날 수 있으며 떨림, 심한 공복감, 진땀, 두통, 어지러움 등의 증상이 나타납니다.<br>
+            •	이 때에는 즉시 단순당 식품들을 섭취하여 혈당이 정상으로 돌아오게 해야 합니다.
+
+         </p><br>
+           <h4> • 저혈당 응급식품과 섭취량(예)</h4>
+         <p>•	당류: 사탕 2∼3개(12g), 꿀 1큰술(15g), 초코렛 조각 1개(9g), 캐러멜 2∼3개(9∼14g)<br>
+            •	음료수: 콜라 반캔(130㎖), 야쿠르트 1병(65㎖), 쥬스 반잔(100㎖)<br>
+            •	과일류: 사과 중간크기 반개(100g), 배 1쪽(100g), 포도 반송이(100g), 복숭아 통조림 1쪽(80g), 파인애플 통조림 링 1개(80g)
+         </p>
+           </div>
+        </div>
+        <div class="all_wrap"></div>
+      <div class='highfat_news'>
+            <div class='hifat_newsin'>
+           <button class="cloe2">X</button>
+         <h3 > 고지혈증 식사요령 </h3><br>
+          <h4> • 포화지방 제한</h4>
+         <p>
+            o 나쁜 지방인 포화지방 섭취를 줄이십시오.<br>
+            o 동물성 지방: 삼겹살, 갈비, 닭고기 껍질, 유지방(생크림)<br>
+            o 식물성 지방(야자유, 코코넛유): 프림, 라면, 과자
+
+         </p><br>
+          <h4>• 콜레스테롤 섭취 제한</h4>
+         <p>
+            o 다음의 콜레스테롤이 많은 음식은 주 2회 정도로 제한합니다.<br>
+            o 알　류: 계란, 메추리 알 노른자, 생선 알<br>
+            o 내장 류: 곱창, 간, 허파, 창난젓, 아가미 젓<br>
+            o 해물 류: 장어, 새우, 낙지, 오징어
+         </p><br>
+           <h4>• 불포화지방산 섭취</h4>
+         <p>
+            o 식물성 기름은 다양하게 섭취하고 특히 오메가 3지방섭취는 주 2회 이상 섭취하십시오.<br>
+            o 오메가3지방: 등 푸른 생선, 들기름<br>
+            o 오메가6지방: 콩기름, 옥수수기름<br>
+            o 단일불포화 지방: 올리브유, 카놀라유
+
+         </p><br>
+           <h4>• 섬유소 섭취</h4>
+         <p>
+            o 식이 섬유소는 혈액 내 콜레스테롤 및 중성지방을 감소시킵니다.<br>
+            o 흰밥대신 잡곡밥으로 드십시오.<br>
+            o 야채(1일 6접시), 과일(1일 1-2회)을 충분히 드십시오.
+         </p><br>
+          <h4> • 알코올 및 단순당 제한</h4>
+           <p>
+               o 알코올과 단순당 (사탕, 과자, 단 음료수 등)은 혈액 내 중성지방을 증가시킵니다.<br>
+               o 중성지방이 높다면 금주하시고 알코올은 1일 1-2잔 이하로 제한합니다.<br>
+               o 단순당 섭취를 줄입니다.
+
+         </p><br>
+           <h4>• 항 산화영양소 섭취</h4>
+           <p>o	비타민 등 항산화 영양소는 혈관손상을 줄이고 호모시스테인 증가를 감소시킵니다.<br>
+              o	항 산화영양소가 함유된 야채, 과일을 충분히 섭취하고, 특히 색이 진한 것으로 드십시오.
+
+         </p>
+            </div>
+        </div>
+    <header>
+        <div id="logo">
+            <a href="#"><img src="{{url_for('static', filename='images/logo_re.png')}}"> </a>
+        </div>
+        <div id="main_title">
+            <h3 class="title_text" style="font-size:15px;font-family:'nanumsquare'; color:#dimgray; margin-top:-7px;"> 식의 고수에서 맞춤형 건강 식단을 만나보세요.</h3>
+        </div>
+        <nav>
+         <ul>
+                <li>신메뉴</li>
+                <li>오늘의 메뉴 보기</li>
+                <li>식단 분석표</li>
+                <li><i class="fas fa-utensils" style="color:#ff3300; font-size:20px;"></i></li>
+            </ul>
+
+        </nav>
+
+    </header>
+    <div class="container_wrap">
+        <img src="{{url_for('static', filename='images/main_img.jpg')}}" class="contain_img">
+<!--        <img src="{{url_for('static', filename='images/main_img2.jpg')}}" class="contain_img">-->
+        <div class="container">
+          <h3 class="in"><p>{{my_str}}</p></h3>       <!-- my_str 바인딩 -->
+            <br>
+          <h5><p class="guide">개인화 식단 추천을 위한 정보를 입력해주세요.</p></h5>  <!-- my_list 바인딩 -->
+            <form method="post" action="result">
+               <table class="indi_info">
+                   <tr>
+                       <td><span class="gender">성별 : </span></td>
+                       <td> <input type="radio" value="남성" name="gender" class="rdgen"> <span class="gender_sub"> 남성 </span>
+                            <input type="radio" value="여성" name="gender" class="rdgen"> <span class="gender_sub"> 여성 </span></td>
+                   </tr>
+                   <tr>
+                       <td><span class="age">나이 : </span></td>
+                       <td><input type="text" placeholder="나이를 입력해주세요.(숫자만입력해주십시오.)" name="age" class="age_iput"></td>
+                   </tr>
+                    <tr>
+                       <td><span class="hweight">신장 / 체중 : </span></td>
+                       <td><input type="text" placeholder="신장을 입력해주십시오.(cm)" name='height' class="height_input">
+                           <input type="text" placeholder="체중을 입력해주십시오.(kg)" name='weight' class="weight_input">
+                       </td>
+                   </tr>
+                   <tr>
+                       <td><span class="active">활동수준 : </span></td>
+                       <td>
+                           <select class="activelevel" name="activelevel">
+                              <li><option value="0">활동수준 선택하기</option></li>
+                              <li><option value="낮음">낮음 (운동량 거의 없음)</option></li>
+                              <li><option value="보통">보통 (사무직, 생활운동)</option></li>
+                              <li><option value="활발">활발 (꾸준한 운동)</option></li>
+                              <li><option value="매우활발">매우활발 (높은 강도의 꾸준한 운동)</option></li>
+                           </select>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                          <span class="disease1">질병유무 : </span>
+                       </td>
+                       <td class="disease_co">
+                           <input type="checkbox" value="당뇨병" name="당뇨병" class="disease_info"><span>당뇨병</span>
+                           <input type="checkbox" value="고혈압" name="고혈압" class="disease_info"><span>고혈압</span>
+                           <input type="checkbox" value="고지혈증" name="고지혈증" class="disease_info"><span>고지혈증</span>
+                           <input type="checkbox" value="근골격질환" name="근골격질환" class="disease_info"><span>근골격질환</span>
+
+                       </td>
+
+                   </tr>
+                   <tr>
+                       <td>
+                          <span class="disease">기타 질병 : </span>
+                       </td>
+                       <td>
+                           <input type="text" class="etc_disease" placeholder="기타 보유 질병,알러지 질환을 기입해주세요.">
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+
+                       </td>
+                       <td>
+                           <input type="submit" class="check_btn" value="입력완료" ></input>
+                       </td>
+                   </tr>
+               </table>
+            </form>
+
+    </div>
+    </div>
+    <section class="health_infos">
+        <div class="info_div">
+            <h4 class="h_info_notice">  건강 식사 요법 안내  </h4>
+            <div class="h_info_in">
+                <ul>
+                    <li><span class="diseases tension">#고혈압</span></li>
+                    <li><span class="diseases diabete">#당뇨병</span></li>
+                    <li><span class="diseases">#골다공증</span></li>
+                    <li><span class="diseases highfat">#고지혈증</span></li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="news_container">
+            <div class="news_in">
+                <img src="{{url_for('static', filename=('images/hipertension.jpg'))}}" class="tension">
+                <div class="hover_img" >
+                    <div class="info_detail">
+                        <h4> 고혈압 상식 </h4>
+                        <p> 시금치, 당근, 칼슘</p>
+                    </div>
+                </div>
+                <img src="{{url_for('static', filename=('images/food.jpg'))}}" class="diabete">
+                <div class="hover_img1" class="diabetes">
+                     <div class="info_detail">
+                        <h4> 당뇨병 상식 </h4>
+                        <p> 시금치, 당근, 칼슘</p>
+                    </div>
+                </div>
+                <img src="{{url_for('static', filename=('images/healthcare.jpg'))}}" class="highfat">
+                <div class="hover_img2" class="highfat">
+                     <div class="info_detail">
+                        <h4> 고지혈증 상식 </h4>
+                        <p> 시금치, 당근, 칼슘</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+  </body>
+</html>

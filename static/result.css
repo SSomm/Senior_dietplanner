@@ -1,0 +1,271 @@
+ *{
+    text-decoration:none;
+    list-style:none;
+    font-family:'NanumSquare';
+    margin:0 auto;
+    }
+    header{
+    width:100%;
+    height:100px;
+    }
+     #logo{
+       width:260px;
+       margin-left:130px;
+       height:100%;
+       float:left;
+       padding-right:px;
+       padding-left:40px;
+       padding-top:20px;
+       box-sizing:border-box;
+    }
+    #logo img{
+        width:80%;
+        height:auto;
+        padding-top:10px;
+    }
+    #main_title{
+        width:300px;
+        height:50px;
+        float:left;
+        padding-top:70px;
+        margin-left:-30px;
+    }
+
+    nav{
+        margin:0 auto;
+        float:left;
+        width:500px;
+        box-sizing:border-box;
+        position:relative;
+
+    }
+    nav li{
+    padding-top:50px;
+    float:left;
+    margin-right:30px;
+    font-size:18px;
+    line-height:50px;
+    font-weight:bolder;
+    }
+     nav li:hover{
+     cursor:pointer;
+     color:#FF3300;
+     }
+.container_wrap{
+    margin:0 auto;
+    margin-top:10px;
+    width:100%;
+    height:600px;
+    position:relative;
+    z-index:1;
+    background-color: rgba(255,190,0, 0.6);
+
+}
+.container {
+        margin:0 auto;
+        max-width: 900px;
+        height:570px;
+        position:relative;
+        padding-top: 30px;
+        font-size: 16px;
+        background-color:rgba(255,255,255,0.7);
+        padding-left:20px;
+        font-family:'NanumSquare';
+}
+
+span{
+    font-family:'NanumSquare';
+}
+h3,h4{
+    font-family:'NanumSquare';
+}
+.title_line{
+    position:relative;
+    z-index:3;
+    width:100%;
+    height:70px;
+    background-color:#ff3300;
+
+}
+.result_title{
+    text-align:center;
+    font-size:20px;
+    color:#ff3300;
+    textshadow:4px 4px 2px #ececec;
+    font-size:25px;
+}
+
+.duration{
+    text-align:center;
+    padding-top:10px;
+
+}
+.days{
+    margin:0 auto;
+    width:100%;
+    height:35px;
+    text-align:center;
+
+}
+.days span{
+    width:50px;
+    height: 35px;
+    background-color:black;
+    border-radius:3px;
+    padding:2px;
+    color:white;
+    line-height:40px;
+}
+.division{
+   margin:0 auto;
+   height:40px;
+   line-height:40px;
+    text-align:center;
+}
+.division span{
+    width:80px;
+    height:35px;
+    padding:5px;
+    padding-right:10px;
+    padding-left:10px;
+    background-color:#ff3300;
+    color:white;
+    border-radius:7px;
+    margin-right:10px;
+
+}
+.slide_btn{
+    position:absolute;
+    font-weight:bolder;
+    font-size:30px;
+    margin-top:130px;
+    z-index:2;
+    cursor:pointer;
+}
+.re_table{
+    position:absolute;
+    margin:0 auto;
+    //margin-left:80px;
+    z-index:1;
+    width:2500px;
+    height:400px;
+    float:left;
+    transition:all ease 0.7s;
+    box_sizing:border-box;
+}
+.re_table>div{
+    float:left;
+    width:778px;
+}
+.b_div{
+    display:block;
+    transition:all 0.7s;
+}
+.l_div{
+    display:block;
+    transition:all 0.7s;
+}
+.d_div{
+    display:block;
+    transition:all 0.7s;
+}
+.right_btn{
+    margin-left:850px;
+
+}
+.hover_span:hover{
+    cursor:pointer;
+    border:1px solid #ff8800;
+    background-color:white;
+    color: #ff8799;
+    transition: -1.5s;
+}
+table{
+    width:740px;
+    height:300px;
+    border:0.5px solid dimgray;
+    font-family:'NanumSquare';
+    background-color:white;
+}
+table tr{
+    width:540px;
+    height:auto;
+    border:0.5px solid dimgray;
+}
+table tr td{
+    width:25%;
+    text-align:center;
+}
+
+img{
+    width:150px;
+    height:auto;
+
+}
+.breakfast{
+    font-family:'나눔스퀘어 Bold';
+    text-align:center;
+
+}
+.btns{
+margin:0 auto;
+width:700px;
+height:50px;
+position:relative;
+text-align:center;
+margin-top:320px;
+}
+
+.prev_week{
+    width:130px;
+    height:35px;
+    line-height:35px;
+    border-radius:7px;
+    background-color:#ff3300;
+    color:white;
+    margin-top:10px;
+    margin-left:225px;
+    float:left;
+    text-align:center;
+}
+.nxt_week{
+    width:130px;
+    height:35px;
+    line-height:35px;
+    border-radius:7px;
+    background-color:#ff3300;
+    color:white;
+    margin-top:-35px;
+    margin-left:360px;
+    float:left;
+    text-align:center;
+}
+.table_con{
+    position: absolute;
+    margin: 0 auto;
+    margin-left: 55px;
+    width: 778px;
+    height: 300px;
+    float: left;
+    overflow:hidden;
+}
+.slide_btn:hover{
+    position: absolute;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-top: 130px;
+    z-index: 2;
+    cursor: pointer;
+    background-color: white;
+    color: #ff8799;
+    transition: -1.5s;
+}
+.orange_line{
+    width:100%;
+    height:30px;
+}
+.result_diet{
+    color:#dimgray;
+    font-weight:bolder;
+    font-size:20px;
+}

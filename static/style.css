@@ -1,0 +1,410 @@
+ *{
+    text-decoration:none;
+    list-style:none;
+    font-family:'nanumsquare';
+    }
+.all_wrap{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.6);
+    z-index:50;
+}
+.hi_news{
+    margin:0 auto;
+    display:none;
+    position:fixed;
+   width:800px;
+   height:auto;
+   z-index:100;
+   left:200px;
+   top:50px;
+   padding:20px;
+   background-color:white;
+    }
+.highfat_news{
+    margin:0 auto;
+    display:none;
+    position:fixed;
+   width:800px;
+   height:auto;
+   z-index:100;
+   left:200px;
+   top:50px;
+   padding:20px;
+   background-color:white;
+}
+.diabetes_news{
+    margin:0 auto;
+    display:none;
+    position:fixed;
+   width:800px;
+   height:auto;
+   z-index:100;
+   left:200px;
+   top:50px;
+   padding:20px;
+   background-color:white;
+}
+.hi_newsin{
+   margin:auto 0;
+   width:700px;
+   height:auto;
+   position:relative;
+   z-index:100;
+   padding:10px;
+   padding-bottom:50px;
+    }
+.dia_newsin{
+   margin:auto 0;
+   width:700px;
+   height:auto;
+   position:relative;
+   z-index:100;
+   padding:10px;
+   padding-bottom:50px;
+    }
+.hifat_newsin{
+   margin:auto 0;
+   width:700px;
+   height:750px;
+   overflow-y:auto;
+   overflow-x:hidden;
+   position:relative;
+   z-index:100;
+   padding:10px;
+   padding-bottom:50px;
+    }
+
+  .cloe{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background-color:#FF3300;
+    color:white;
+    font-weight:bolder;
+    line-height:30px;
+    z-index:200;
+    position:absolute;
+    right:-30px;
+    box-shadow:4px 4px 2px #eee;
+
+    }
+    .cloe1{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background-color:#FF3300;
+    color:white;
+    font-weight:bolder;
+    line-height:30px;
+    z-index:200;
+    position:absolute;
+    right:-30px;
+    box-shadow:4px 4px 2px #eee;
+
+    }
+    .cloe2{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background-color:#FF3300;
+    color:white;
+    font-weight:bolder;
+    line-height:30px;
+    z-index:200;
+    position:absolute;
+    right:0px;
+    box-shadow:4px 4px 2px #eee;
+
+    }
+header{
+    width:100%;
+    height:100px;
+    }
+     #logo{
+       width:260px;
+       margin-left:130px;
+       height:100%;
+       float:left;
+       padding-right:px;
+       padding-left:40px;
+       padding-top:20px;
+       box-sizing:border-box;
+    }
+    #logo img{
+        width:80%;
+        height:auto;
+        padding-top:10px;
+    }
+    #main_title{
+        width:300px;
+        height:50px;
+        float:left;
+        padding-top:70px;
+        margin-left:-30px;
+    }
+
+    nav{
+        margin:0 auto;
+        float:left;
+        width:500px;
+        box-sizing:border-box;
+        position:relative;
+
+    }
+    nav li{
+    padding-top:50px;
+    float:left;
+    margin-right:30px;
+    font-size:18px;
+    line-height:50px;
+    font-weight:bolder;
+    }
+     nav li:hover{
+     cursor:pointer;
+     color:#FF3300;
+     }
+
+     .container_wrap{
+        width:100%;
+        height:503px;
+        background:rgba(255,190,0, 0.6);
+        position:relative;
+        z-index:1;
+     }
+     .contain_img{
+        width:auto;
+        height:503px;
+        float:left;
+
+
+      }
+      .container {
+        margin : 0 auto;
+        position:absolute;
+        width:650px;
+        max-width: 950px;
+        margin-left:550px;
+        padding-top: 50px;
+        font-size: 16px;
+        overflow:hidden;
+        background-color:rgba(255,255,255,0.8);
+
+      }
+     .guide{
+       text-align:center;
+       margin-top:-10px;
+       color:#dimgray;
+      }
+     table{
+     margin: 0 auto;
+     width:500px;
+     height:350px;
+     }
+     .rdgen{
+     width:80px;s
+     }
+     .age_iput{
+      width:385px;
+     }
+     .height_input,.weight_input{
+     width:190px;
+     }
+     .activelevel{
+        width:385px;
+        height:30px;
+     }
+     .check_btn{
+        width:75px;
+        height:40px;
+        color:white;
+        background-color:#FF3300;
+        margin:5px;
+        border:1px solid #FF3300;
+        border-radius:5px;
+        padding:5px;
+        text-align:center;
+        margin-left:320px;
+     }
+     .indi_info td:nth-child(1){
+        font-weight:bold;
+     }
+     .activelevel option{
+     width:100%;
+     height:auto;
+     border:1px solid black;
+     }
+     .check_btn:hover{
+        cursor:pointer;
+        background-color:white;
+        color:#FF3300;
+        border:1px solid #FF3300;
+        transition:1s;
+     }
+     .disease_info{
+        width: 35px;
+     }
+     .etc_disease{
+       width:385px;
+     }
+
+    .in > p{
+        text-align:center;
+        font-weight:bolder;
+        color:#FF3300;
+        text-shadow:4px 4px 2px #ececec;
+    }
+
+
+    .health_infos{
+        width:100%;
+        height:70px;
+        margin:0 auto;
+        background-color:#ff3300;
+
+    }
+
+    .disease_co li{
+    width:100px;
+    float: left;
+}
+.dis
+    .disease_co li:last-child{
+    width:105px;
+    }
+    .info_div{
+        width:700px;
+        height:70px;
+        margin:0 auto;
+        box-sizing:border-box;
+    }
+    .h_info_notice{
+        width:auto;
+        height:70px;
+        color:white;
+        line-height:80px;
+        padding-right:30px;
+        font-weight:bolder;
+        text-align:center;
+        margin:0 auto;
+        font-family:'nanumsquare';
+        font-size:20px;
+        float:left;
+
+    }
+    .h_info_in{
+        width:500px;
+        height:70px;
+        line-height:70px;
+        float:left;
+    }
+    .h_info_in span{
+        color:white;
+        font-size:17px;
+        float:left;
+        height:35px;
+        line-height:35px;
+        padding-left:8px;
+        padding-right:8px;
+        box-sizing:border-box;
+        background-color:#FF6600;
+        border-radius:5px;
+        margin-right:15px;
+
+    }
+    .h_info_in span:hover{
+      color:#ff3300;
+      font-weight:bolder;
+      background-color:white;
+      cursor:pointer;
+      transition:1s;
+
+      }
+
+    .h_info_in> ul{
+        margin:0 auto;
+        padding-top:20px;
+
+    }
+    .news_container{
+        width:100%;
+
+    }
+    .news_in{
+        width:950px;
+        height:200px;
+        margin:0 auto;
+        margin-top:10px;
+        border-radius:5px;
+        box-shadow:3px 3px 2px 2px #cccccc;
+        border:0.5px solid #cccccc;
+        overflow:hidden;
+        padding:5px;
+        padding-left:14px;
+        box-sizing:border-box;
+    }
+    .news_in img{
+        cursor:pointer;
+    }
+    .hover_img{
+        width:300px;
+        height:188px;
+        background-color:rgba(70,70,70, 0.5);
+        display:none;
+        position:absolute;
+        z-index:5;
+        float:left;
+    }
+    .hover_img1{
+        width:300px;
+        height:188px;
+        background-color:rgba(70,70,70, 0.5);
+        position:absolute;
+        margin-left:310px;
+        display:none;
+        z-index:5;
+        float:left;
+    }
+    .hover_img2{
+        width:300px;
+        height:188px;
+        background-color:rgba(70,70,70, 0.5);
+        position:absolute;
+        z-index:5;
+        display:none;
+        margin-left:620px;
+        float:left;
+    }
+    .news_in img{
+        float:left;
+        position:relative;
+        width:300px;
+        height:188px;
+        overflow:hidden;
+        margin-right:10px;
+    }
+    .health_info{
+        width:300px;
+        height:100%;
+        float:left;
+        position
+        text-align:center;
+    }
+    .health_info>h4, p{
+    }
+    .info_detail{
+        text-align:center;
+        display:none;
+    }
+    .info_detail h4, .info_detail p{
+        font-family:'nanumsquare';
+        color:white;
+        margin-top:25px;
+    }
