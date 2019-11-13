@@ -224,8 +224,9 @@ function redirectPost(url, data) {
     });
 
     //요일 바뀔 때의 변화
-    $(".hover_span").on("click", function(){
+    $(".hover_spann").on("click", function(){
         var days=$(this).text();
+        var week=$(this).data("week");
         var check=$(this).data("check");
         if(days=="월"){
             days=0;
@@ -242,11 +243,52 @@ function redirectPost(url, data) {
         }else{
             days=6
         }
-       location.href='/result'+'?days='+days+'&check='+check;
+       location.href='/result'+'?days='+days+'&check='+check+"&week="+week;
+
+    });
+
+    $(".week_change").on("click", function(){
+        var days=$(this).data("days");
+        var check=$(this).data("check");
+        var week=$(this).data("week");
+        if(days=="월"){
+            days=0;
+        }else if(days=="화"){
+            days=1;
+        }else if(days=="수"){
+            days=2;
+        }else if(days=='목'){
+            days=3;
+        }else if(days=='금'){
+            days=4;
+        }else if(days=='토'){
+            days=5;
+        }else{
+            days=6
+        }
+       location.href='/result'+'?days='+days+'&check='+check+'&week='+week;
 
     });
 
 
+    var week =$(".hidden_week").text();
+//        alert(week);
+    if(week=='preweek'){
+        $(".prev_week").hide();
+        $(".this_week").show();
+        $(".nxt_week").show();
+    }else if(week=="nextweek"){
+//     alert(week);
+        $(".prev_week").show();
+        $(".this_week").show();
+        $(".this_week").css("margin-right","0");
+        $(".nxt_week").hide();
+    }else{
+//     alert(week);
+        $(".prev_week").show();
+        $(".this_week").hide();
+        $(".nxt_week").show();
+    }
 
 
 

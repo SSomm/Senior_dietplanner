@@ -38,7 +38,8 @@ def select_diet():
         days1=dt.weekday()
 
         gender=request.form['gender']
-        age=request.form['age']
+        age=request.form['result_age']
+        # age=66
         height=request.form['height']
         weight=request.form['weight']
         actlevel=request.form['activelevel']
@@ -75,10 +76,11 @@ def select_diet():
             actlevelrate = 2
         elif actlevel == '활발':
             actlevelrate = 3
-        check_str=str(gender)+str(age)+str(BMI_label)+str(actlevelrate)
+
+        check_str=str(2)+str(gender)+str(age)+str(BMI_label)+str(actlevelrate)
         check.append(check_str)
         # check_str=str(0001)
-        origin_path = 'E:\고령식단\Final_diet'
+        origin_path = 'D:\고령식단\Final_diet'
         bre_combilist = os.listdir(origin_path + '\Breakfast')
         lun_combilist = os.listdir(origin_path + '\lunch')
         din_combilist = os.listdir(origin_path + '\dinner')
@@ -150,36 +152,36 @@ def select_diet():
         for b in final_plan_bre:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein":bsplit[7],
-                "fat":bsplit[8],
-                "carbo":bsplit[9],
-                "sweet":bsplit[10],
-                "Nat":bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal": bsplit[5],
+                "protein":bsplit[6],
+                "fat":bsplit[7],
+                "carbo":bsplit[8],
+                "sweet":bsplit[9],
+                "Nat":bsplit[18],
             }
             df_list_bre.append(dic)
 
         df_result_bre = pd.DataFrame(df_list_bre)
-
         df_list = []
-
         for b in final_plan_lun:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein":bsplit[7],
-                "fat":bsplit[8],
-                "carbo":bsplit[9],
-                "sweet":bsplit[10],
-                "Nat":bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal": bsplit[5],
+                "protein":bsplit[6],
+                "fat":bsplit[7],
+                "carbo":bsplit[8],
+                "sweet":bsplit[9],
+                "Nat":bsplit[18],
             }
             df_list.append(dic)
 
@@ -190,26 +192,28 @@ def select_diet():
         for b in final_plan_din:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein":bsplit[7],
-                "fat":bsplit[8],
-                "carbo":bsplit[9],
-                "sweet":bsplit[10],
-                "Nat":bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal":bsplit[5],
+                "protein":bsplit[6],
+                "fat":bsplit[7],
+                "carbo":bsplit[8],
+                "sweet":bsplit[9],
+                "Nat":bsplit[18],
             }
             df_list_din.append(dic)
 
         df_result_din = pd.DataFrame(df_list_din)
 
         breakfast_final=df_result_bre
-        lunch_final = df_result.drop_duplicates(['basic', 'soup'], keep='first')
+        # lunch_final = df_result.drop_duplicates(['basic', 'soup'], keep='first')
+        lunch_final = df_result
         dinner_final = df_result_din
 
-        all_result = []
+        all_result = {}
         days = [0, 1, 2, 3, 4, 5, 6]
         thisweek = []
         preweek = []
@@ -217,63 +221,92 @@ def select_diet():
         for i in range(21):
             if (i < 7):
                 thisweek.append({days[i]:
-                                     [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1], breakfast_final.iloc[i][2],
-                                       breakfast_final.iloc[i][3], breakfast_final.iloc[i][4],breakfast_final.iloc[i][5],
-                                       breakfast_final.iloc[i][6], breakfast_final.iloc[i][7], breakfast_final.iloc[i][8],
-                                       breakfast_final.iloc[i][9]],
-                                      [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                       lunch_final.iloc[i][3], lunch_final.iloc[i][4],lunch_final.iloc[i][5],
-                                       lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                       lunch_final.iloc[i][9]],
-                                      [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                       dinner_final.iloc[i][3], dinner_final.iloc[i][4],dinner_final.iloc[i][5],
-                                       dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                       dinner_final.iloc[i][9]]]
+                                     [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                       breakfast_final.iloc[i]["main"],
+                                       breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                       breakfast_final.iloc[i]["tcal"],
+                                       breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                       breakfast_final.iloc[i]["carbo"],
+                                       breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                      [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                       lunch_final.iloc[i]["main"],
+                                       lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                       lunch_final.iloc[i]["tcal"],
+                                       lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                       lunch_final.iloc[i]["carbo"],
+                                       lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                      [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                       dinner_final.iloc[i]["main"],
+                                       dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                       dinner_final.iloc[i]["tcal"],
+                                       dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                       dinner_final.iloc[i]['carbo'],
+                                       dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                  })
             elif (i >= 7 and i < 14):
                 preweek.append({days[i - 7]:
-                                    [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1], breakfast_final.iloc[i][2],
-                                      breakfast_final.iloc[i][3], breakfast_final.iloc[i][4], breakfast_final.iloc[i][5],
-                                      breakfast_final.iloc[i][6], breakfast_final.iloc[i][7], breakfast_final.iloc[i][8],
-                                      breakfast_final.iloc[i][9]],
-                                     [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                      lunch_final.iloc[i][3], lunch_final.iloc[i][4], lunch_final.iloc[i][5],
-                                      lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                      lunch_final.iloc[i][9]],
-                                     [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                      dinner_final.iloc[i][3], dinner_final.iloc[i][4], dinner_final.iloc[i][5],
-                                     dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                     dinner_final.iloc[i][9]]]
+                                    [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                      breakfast_final.iloc[i]["main"],
+                                      breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                      breakfast_final.iloc[i]["tcal"],
+                                      breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                      breakfast_final.iloc[i]["carbo"],
+                                      breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                     [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                      lunch_final.iloc[i]["main"],
+                                      lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                      lunch_final.iloc[i]["tcal"],
+                                      lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                      lunch_final.iloc[i]["carbo"],
+                                      lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                     [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                      dinner_final.iloc[i]["main"],
+                                      dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                      dinner_final.iloc[i]["tcal"],
+                                      dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                      dinner_final.iloc[i]['carbo'],
+                                      dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                 })
             else:
                 nextweek.append({days[i - 14]:
-                                     [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1], breakfast_final.iloc[i][2],
-                                       breakfast_final.iloc[i][3], breakfast_final.iloc[i][4], breakfast_final.iloc[i][5],
-                                       breakfast_final.iloc[i][6], breakfast_final.iloc[i][7], breakfast_final.iloc[i][8],
-                                       breakfast_final.iloc[i][9]],
-                                      [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                       lunch_final.iloc[i][3], lunch_final.iloc[i][4], lunch_final.iloc[i][5],
-                                       lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                       lunch_final.iloc[i][9]],
-                                      [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                       dinner_final.iloc[i][3], dinner_final.iloc[i][4], dinner_final.iloc[i][5],
-                                      dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                      dinner_final.iloc[i][9]]]
+                                     [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                       breakfast_final.iloc[i]["main"],
+                                       breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                       breakfast_final.iloc[i]["tcal"],
+                                       breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                       breakfast_final.iloc[i]["carbo"],
+                                       breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                      [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                       lunch_final.iloc[i]["main"],
+                                       lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                       lunch_final.iloc[i]["tcal"],
+                                       lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                       lunch_final.iloc[i]["carbo"],
+                                       lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                      [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                       dinner_final.iloc[i]["main"],
+                                       dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                       dinner_final.iloc[i]["tcal"],
+                                       dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                       dinner_final.iloc[i]['carbo'],
+                                       dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                  })
 
-        all_result.append({'thisweek': thisweek})
-        all_result.append({'preweek': preweek})
-        all_result.append({'nextweek': nextweek})
+        all_result['thisweek']= thisweek
+        all_result['preweek']=preweek
+        all_result['nextweek']=nextweek
         global_result.append(all_result)
-        return render_template('diet_result.html', date=today, date2=dayslater, all_result=all_result, days=days1, check_str=check_str)
+        week='thisweek'
+        return render_template('diet_result.html', date=today, date2=dayslater, all_result=all_result, days=days1, week=week, check_str=check_str)
     else:
         today = datetime.date.today()
         dayslater = today + datetime.timedelta(days=7)
         days1 = int(request.args.get('days'))
         check_str = request.args.get('check')
+        week=request.args.get('week')
         # check.append(check_str)
         # check_str=str(0001)
-        origin_path = 'E:\고령식단\Final_diet'
+        origin_path = 'D:\고령식단\Final_diet'
         bre_combilist = os.listdir(origin_path + '\Breakfast')
         lun_combilist = os.listdir(origin_path + '\lunch')
         din_combilist = os.listdir(origin_path + '\dinner')
@@ -350,16 +383,17 @@ def select_diet():
         for b in final_plan_bre:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein": bsplit[7],
-                "fat": bsplit[8],
-                "carbo": bsplit[9],
-                "sweet": bsplit[10],
-                "Nat": bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal": bsplit[5],
+                "protein": bsplit[6],
+                "fat": bsplit[7],
+                "carbo": bsplit[8],
+                "sweet": bsplit[9],
+                "Nat": bsplit[18],
             }
             df_list_bre.append(dic)
 
@@ -370,16 +404,17 @@ def select_diet():
         for b in final_plan_lun:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein": bsplit[7],
-                "fat": bsplit[8],
-                "carbo": bsplit[9],
-                "sweet": bsplit[10],
-                "Nat": bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal": bsplit[5],
+                "protein": bsplit[6],
+                "fat": bsplit[7],
+                "carbo": bsplit[8],
+                "sweet": bsplit[9],
+                "Nat": bsplit[18],
             }
             df_list.append(dic)
 
@@ -390,26 +425,28 @@ def select_diet():
         for b in final_plan_din:
             bsplit = b.split(",")
             dic = {
-                "basic": bsplit[1],
-                "soup": bsplit[2],
-                "main": bsplit[3],
-                "side": bsplit[4],
-                "sim": bsplit[5],
-                "protein": bsplit[7],
-                "fat": bsplit[8],
-                "carbo": bsplit[9],
-                "sweet": bsplit[10],
-                "Nat": bsplit[19],
+                "basic": bsplit[0],
+                "soup": bsplit[1],
+                "main": bsplit[2],
+                "side": bsplit[3],
+                "sim": bsplit[4],
+                "tcal": bsplit[5],
+                "protein": bsplit[6],
+                "fat": bsplit[7],
+                "carbo": bsplit[8],
+                "sweet": bsplit[9],
+                "Nat": bsplit[18],
             }
             df_list_din.append(dic)
 
         df_result_din = pd.DataFrame(df_list_din)
 
         breakfast_final = df_result_bre
-        lunch_final = df_result.drop_duplicates(['basic', 'soup'], keep='first')
+        # lunch_final = df_result.drop_duplicates(['basic', 'soup'], keep='first')
+        lunch_final=df_result
         dinner_final = df_result_din
 
-        all_result = []
+        all_result = {}
         days = [0, 1, 2, 3, 4, 5, 6]
         thisweek = []
         preweek = []
@@ -417,65 +454,83 @@ def select_diet():
         for i in range(21):
             if (i < 7):
                 thisweek.append({days[i]:
-                                     [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1],
-                                       breakfast_final.iloc[i][2],
-                                       breakfast_final.iloc[i][3], breakfast_final.iloc[i][4],
-                                       breakfast_final.iloc[i][5],
-                                       breakfast_final.iloc[i][6], breakfast_final.iloc[i][7],
-                                       breakfast_final.iloc[i][8],
-                                       breakfast_final.iloc[i][9]],
-                                      [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                       lunch_final.iloc[i][3], lunch_final.iloc[i][4], lunch_final.iloc[i][5],
-                                       lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                       lunch_final.iloc[i][9]],
-                                      [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                       dinner_final.iloc[i][3], dinner_final.iloc[i][4], dinner_final.iloc[i][5],
-                                       dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                       dinner_final.iloc[i][9]]]
+                                     [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                       breakfast_final.iloc[i]["main"],
+                                       breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                       breakfast_final.iloc[i]["tcal"],
+                                       breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                       breakfast_final.iloc[i]["carbo"],
+                                       breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                      [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                       lunch_final.iloc[i]["main"],
+                                       lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                       lunch_final.iloc[i]["tcal"],
+                                       lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                       lunch_final.iloc[i]["carbo"],
+                                       lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                      [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                       dinner_final.iloc[i]["main"],
+                                       dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                       dinner_final.iloc[i]["tcal"],
+                                       dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                       dinner_final.iloc[i]['carbo'],
+                                       dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                  })
             elif (i >= 7 and i < 14):
                 preweek.append({days[i - 7]:
-                                    [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1],
-                                      breakfast_final.iloc[i][2],
-                                      breakfast_final.iloc[i][3], breakfast_final.iloc[i][4],
-                                      breakfast_final.iloc[i][5],
-                                      breakfast_final.iloc[i][6], breakfast_final.iloc[i][7],
-                                      breakfast_final.iloc[i][8],
-                                      breakfast_final.iloc[i][9]],
-                                     [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                      lunch_final.iloc[i][3], lunch_final.iloc[i][4], lunch_final.iloc[i][5],
-                                      lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                      lunch_final.iloc[i][9]],
-                                     [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                      dinner_final.iloc[i][3], dinner_final.iloc[i][4], dinner_final.iloc[i][5],
-                                      dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                      dinner_final.iloc[i][9]]]
+                                    [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                      breakfast_final.iloc[i]["main"],
+                                      breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                      breakfast_final.iloc[i]["tcal"],
+                                      breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                      breakfast_final.iloc[i]["carbo"],
+                                      breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                     [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                      lunch_final.iloc[i]["main"],
+                                      lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                      lunch_final.iloc[i]["tcal"],
+                                      lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                      lunch_final.iloc[i]["carbo"],
+                                      lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                     [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                      dinner_final.iloc[i]["main"],
+                                      dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                      dinner_final.iloc[i]["tcal"],
+                                      dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                      dinner_final.iloc[i]['carbo'],
+                                      dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                 })
             else:
                 nextweek.append({days[i - 14]:
-                                     [[breakfast_final.iloc[i][0], breakfast_final.iloc[i][1],
-                                       breakfast_final.iloc[i][2],
-                                       breakfast_final.iloc[i][3], breakfast_final.iloc[i][4],
-                                       breakfast_final.iloc[i][5],
-                                       breakfast_final.iloc[i][6], breakfast_final.iloc[i][7],
-                                       breakfast_final.iloc[i][8],
-                                       breakfast_final.iloc[i][9]],
-                                      [lunch_final.iloc[i][0], lunch_final.iloc[i][1], lunch_final.iloc[i][2],
-                                       lunch_final.iloc[i][3], lunch_final.iloc[i][4], lunch_final.iloc[i][5],
-                                       lunch_final.iloc[i][6], lunch_final.iloc[i][7], lunch_final.iloc[i][8],
-                                       lunch_final.iloc[i][9]],
-                                      [dinner_final.iloc[i][0], dinner_final.iloc[i][1], dinner_final.iloc[i][2],
-                                       dinner_final.iloc[i][3], dinner_final.iloc[i][4], dinner_final.iloc[i][5],
-                                       dinner_final.iloc[i][6], dinner_final.iloc[i][7], dinner_final.iloc[i][8],
-                                       dinner_final.iloc[i][9]]]
+                                     [[breakfast_final.iloc[i]["basic"], breakfast_final.iloc[i]["soup"],
+                                       breakfast_final.iloc[i]["main"],
+                                       breakfast_final.iloc[i]["side"], breakfast_final.iloc[i]["sim"],
+                                       breakfast_final.iloc[i]["tcal"],
+                                       breakfast_final.iloc[i]["protein"], breakfast_final.iloc[i]["fat"],
+                                       breakfast_final.iloc[i]["carbo"],
+                                       breakfast_final.iloc[i]["sweet"], breakfast_final.iloc[i]["Nat"]],
+                                      [lunch_final.iloc[i]["basic"], lunch_final.iloc[i]["soup"],
+                                       lunch_final.iloc[i]["main"],
+                                       lunch_final.iloc[i]["side"], lunch_final.iloc[i]["sim"],
+                                       lunch_final.iloc[i]["tcal"],
+                                       lunch_final.iloc[i]["protein"], lunch_final.iloc[i]["fat"],
+                                       lunch_final.iloc[i]["carbo"],
+                                       lunch_final.iloc[i]["sweet"], lunch_final.iloc[i]["Nat"]],
+                                      [dinner_final.iloc[i]["basic"], dinner_final.iloc[i]["soup"],
+                                       dinner_final.iloc[i]["main"],
+                                       dinner_final.iloc[i]["side"], dinner_final.iloc[i]["sim"],
+                                       dinner_final.iloc[i]["tcal"],
+                                       dinner_final.iloc[i]["protein"], dinner_final.iloc[i]['fat'],
+                                       dinner_final.iloc[i]['carbo'],
+                                       dinner_final.iloc[i]['sweet'], dinner_final.iloc[i]["Nat"]]]
                                  })
 
-        all_result.append({'thisweek': thisweek})
-        all_result.append({'preweek': preweek})
-        all_result.append({'nextweek': nextweek})
+        all_result['thisweek']=thisweek
+        all_result['preweek']=preweek
+        all_result['nextweek']= nextweek
         global_result.append(all_result)
         return render_template('diet_result.html', date=today, date2=dayslater, all_result=all_result, days=days1,
-                               check_str=check_str)
+                               check_str=check_str, week=week)
 
 # 식단분석페이지
 # @app.route("/analysis", methods=['POST'])

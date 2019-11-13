@@ -212,7 +212,8 @@ header{
      width:80px;s
      }
      .age_iput{
-      width:385px;
+      width:125px;
+      height:30px;
      }
      .height_input,.weight_input{
      width:190px;

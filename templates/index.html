@@ -16,11 +16,69 @@
 
     </style>
 <script>
+function calcAge(birth) {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1);
+            var day = date.getDate();
+            if (month < 10) month = '0' + month;
+            if (day < 10) day = '0' + day;
+            var monthDay = month + day;
+            birth = birth.replace('-', '').replace('-', '');
+            var birthdayy = birth.substr(0, 4);
+            var birthdaymd = birth.substr(4, 4);
+            var age = monthDay < birthdaymd ? year - birthdayy - 1 : year - birthdayy;
+            return age;
+        }
+
+function appendYear(){
+	var date = new Date();
+	var year = date.getFullYear();
+	var selectValue = document.getElementById("year");
+	var optionIndex = 0;
+	for(var i=year-100;i<=year;i++){
+			selectValue.add(new Option(i,i),optionIndex++);
+	}
+}
+function appendMonth(){
+	var selectValue = document.getElementById("month");
+	var optionIndex = 0;
+	for(var i=1;i<=12;i++){
+		selectValue.add(new Option(i,i),optionIndex++);
+	}
+
+}
+
+function appendDay(){
+	var selectValue = document.getElementById("day");
+	var optionIndex = 0;
+	for(var i=1;i<=31;i++){
+
+			selectValue.add(new Option(i,i),optionIndex++);
+	}
+
+}
     $(document).ready(function(){
+        appendYear();appendMonth();appendDay();
+        $(".age_event").on("change", function(){
+             var year=$("select[name=year]").val();
+             var month=$("select[name=month]").val();
+             var day=$("select[name=day]").val();
+             var age='';
+             age+=year+month+day;
+             age=calcAge(age);
+             $(".result_age").attr("value", age);
+<!--             alert($(".result_age").attr("value"));-->
+        });
 
          $('.check_btn').on('click', function(){
              var gender=$('input:radio[name="gender"]:checked').val();
-             var age=$('.age_iput').val();
+             var age='';
+             var year=$("select[name=year]").val();
+             var month=$("select[name=month]").val();
+             var day=$("select[name=day]").val();
+             age+=year+month+day;
+             age=calcAge(age);
              var height=$('.height_input').val();
              var weight=$('.weight_input').val();
              var activelevel=$('.activelevel option:selected').val();
@@ -31,7 +89,7 @@
                 }
              });
 
-            if(gender=='' || age==''|| height==''|| weight==''||activelevel=='' ){
+            if(gender=='' || age==''|| height==''|| weight==''|| activelevel=='' ){
                 alert('성별, 나이, 신장, 체중, 활동수준을 반드시 입력하셔야 합니다.');
                 return false;
             }else{
@@ -217,7 +275,7 @@
           <h3 class="in"><p>{{my_str}}</p></h3>       <!-- my_str 바인딩 -->
             <br>
           <h5><p class="guide">개인화 식단 추천을 위한 정보를 입력해주세요.</p></h5>  <!-- my_list 바인딩 -->
-            <form method="post" action="result">
+            <form method="post" action="/result">
                <table class="indi_info">
                    <tr>
                        <td><span class="gender">성별 : </span></td>
@@ -225,8 +283,30 @@
                             <input type="radio" value="여성" name="gender" class="rdgen"> <span class="gender_sub"> 여성 </span></td>
                    </tr>
                    <tr>
-                       <td><span class="age">나이 : </span></td>
-                       <td><input type="text" placeholder="나이를 입력해주세요.(숫자만입력해주십시오.)" name="age" class="age_iput"></td>
+                       <td><span class="b_age">나이 : </span></td>
+                       <input type="text" style="display:none" name="result_age" class="result_age">
+                       <td>
+                           <input type="hidden" name="memBirth">
+
+					<select id="year" placeholder="출생년도" name="year" class="age_iput">
+
+						<option hidden disalbed> 출생년도 </option>
+
+					</select>
+
+					<select id="month" placeholder="월" name="month" class="age_iput">
+
+						<option hidden disalbed> 월 </option>
+
+					</select>
+
+					<select id="day" placeholder="일" name="day" class="age_iput age_event">
+
+						<option hidden disalbed> 일 </option>
+
+					</select>
+
+                       </td>
                    </tr>
                     <tr>
                        <td><span class="hweight">신장 / 체중 : </span></td>
@@ -238,11 +318,11 @@
                        <td><span class="active">활동수준 : </span></td>
                        <td>
                            <select class="activelevel" name="activelevel">
-                              <li><option value="0">활동수준 선택하기</option></li>
+                              <li><option value="" selected disaled hidden>활동수준 선택하기</option></li>
                               <li><option value="낮음">낮음 (운동량 거의 없음)</option></li>
                               <li><option value="보통">보통 (사무직, 생활운동)</option></li>
                               <li><option value="활발">활발 (꾸준한 운동)</option></li>
-                              <li><option value="매우활발">매우활발 (높은 강도의 꾸준한 운동)</option></li>
+<!--                              <li><option value="매우활발">매우활발 (높은 강도의 꾸준한 운동)</option></li>-->
                            </select>
                        </td>
                    </tr>
@@ -273,6 +353,7 @@
                        </td>
                        <td>
                            <input type="submit" class="check_btn" value="입력완료" ></input>
+<!--                           <button class="check_btn">입력완료</button>-->
                        </td>
                    </tr>
                </table>

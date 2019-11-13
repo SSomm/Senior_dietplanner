@@ -91,7 +91,7 @@ h3,h4{
     text-align:center;
     font-size:20px;
     color:#ff3300;
-    textshadow:4px 4px 2px #ececec;
+   /* textshadow:4px 4px 2px #ececec;*/
     font-size:25px;
 }
 
@@ -148,7 +148,7 @@ h3,h4{
     //margin-left:80px;
     z-index:1;
     width:2500px;
-    height:400px;
+    height:700px;
     float:left;
     transition:all ease 0.7s;
     box_sizing:border-box;
@@ -173,6 +173,7 @@ h3,h4{
     margin-left:850px;
 
 }
+
 .hover_span:hover{
     cursor:pointer;
     border:1px solid #ff8800;
@@ -196,7 +197,10 @@ table tr td{
     width:25%;
     text-align:center;
 }
-
+.img_tr{
+    height:156px;
+    overflow:hidden;
+}
 img{
     width:150px;
     height:auto;
@@ -215,7 +219,12 @@ position:relative;
 text-align:center;
 margin-top:320px;
 }
-
+.btns_wrap{
+    width:275px;
+    height:50px;
+    margin:0 auto;
+    text-align:center;
+}
 .prev_week{
     width:130px;
     height:35px;
@@ -223,8 +232,10 @@ margin-top:320px;
     border-radius:7px;
     background-color:#ff3300;
     color:white;
+    position:relative;
     margin-top:10px;
-    margin-left:225px;
+    margin-right:10px;
+/*    margin-left:225px;*/
     float:left;
     text-align:center;
 }
@@ -233,12 +244,28 @@ margin-top:320px;
     height:35px;
     line-height:35px;
     border-radius:7px;
+    position:relative;
     background-color:#ff3300;
     color:white;
-    margin-top:-35px;
-    margin-left:360px;
+    margin-top:10px;
+/*    margin-left:225px;*/
     float:left;
     text-align:center;
+}
+.this_week{
+    width:130px;
+    height:35px;
+    line-height:35px;
+    position:relative;
+    border-radius:7px;
+    background-color:#ff3300;
+    color:white;
+    margin-right:10px;
+    margin-top:10px;
+/*    margin-left:225px;*/
+    float:left;
+    text-align:center;
+
 }
 .table_con{
     position: absolute;
@@ -248,6 +275,16 @@ margin-top:320px;
     height: 300px;
     float: left;
     overflow:hidden;
+}
+
+.cal_info{
+    text-align:right;
+    font-weight:bolder;
+}
+.ses_bob{
+   text-align:center;
+   padding-left:180px;
+   font-weight:bolder;
 }
 .slide_btn:hover{
     position: absolute;

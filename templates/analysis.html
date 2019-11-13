@@ -23,7 +23,7 @@ window.onload = function() {
 <!--    var diet_list=JSON.stringify({{diet_list}}).replace('&#39;', '');-->
 <!--    var cos_sim=(parseFloat(diet_list[0][0]['thisweek'][0][0][0][4])+parseFloat(diet_list[0][0]['thisweek'][1][1][0][4])+parseFloat(diet_list[0][0]['thisweek'][2][2][0][4])+parseFloat(diet_list[0][0]['thisweek'][3][3][0][4])+parseFloat(diet_list[0][0]['thisweek'][4][4][0][4])+float(diet_list[0][0]['thisweek'][5][5][0][4])+parseFloat(diet_list[0][0]['thisweek'][6][6][0][4]))/7;-->
     var cos_sim=0.98;
-    $('.final_sim').text('약 '+cos_sim.toFixed(2)+'%');
+    $('.final_sim').text('약 '+cos_sim.toFixed(2)*100+'%');
 var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	exportEnabled: true,
@@ -56,7 +56,7 @@ chart.render();
 	axisX: {
 		title:"나트륨 수치",
 		minimum: 790,
-		maximum: 2260
+		maximum: 1500
 	},
 	axisY:{
 		title: "균형식단 기준",
@@ -86,8 +86,8 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 	},
 	axisX: {
 		title:"당류 함량",
-		minimum: 0,
-		maximum: 30
+		minimum: 4,
+		maximum: 9
 	},
 	axisY:{
 		title: "균형식단 기준",
@@ -131,78 +131,50 @@ chart3.render();
             </ul>
 
         </nav>
-
     </header>
 
    <div class="container_wrap">
        <div class="container">
-           <p class="hidden" style="display:none;">{{diet_list}}</p>
-    <br>
-      <div class="left_div">
-      <div clss="title_line">
-        <h3 class="result_title">" 식단 분석표 정보를 확인해보세요. "</h3>
-<!--        <p>{{days}}</p>-->
-          <h4 class="duration" >{{date}} ~ {{date2}}</h4>
-    <div class="btns">
-     <span class="prev_week hover_span">지난주</span><span class="this_week hover_span">이번주</span><span class="nxt_week hover_span">다음주</span>
-    </div>  <br><br><br><br>
-          <div class="congruity">
-            <h4 style="text-align:center; position:relative; left:60px;font-size:22px;">한국인 영양섭취권고 기준 대비 일치도</h4>
-          <br><br>
-<!--              {{diet_list[0][0]['thisweek'][0][0][0][4]}}-->
-          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{diet_list[0][0]['thisweek'][0][0][0][4]}}%</span>
-
-          </div>
-
-
-      </div>
-
-      </div>
-           <div class="left_div right_div">
-           <div class="graphs graph_1">
-<!--        <h4>탄/단/지 비율</h4>-->
-        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-
-      </div>
-
+           <div class="guide_info"><h3 class="result_title">식단 분석 정보를 확인해보세요.</h3><h4 class="duration" >[ {{date}} ~ {{date2}} ]</h4>
+            <div class="btns">
+             <span class="prev_week hover_span">지난주</span><span class="this_week hover_span">이번주</span><span class="nxt_week hover_span">다음주</span>
+            </div>
            </div>
-    <div class="table_con">
-<!--        <p class="diet_list"><br><br><br>-->
-<!--            {{diet_list[0][0]['thisweek'][0][0]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][1][1]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][2][2]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][3][3]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][4][4]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][5][5]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][6][6]}}-->
-<!--        </p>-->
-        <div class="graphs graph_3">
-<!--        <h4>총 당류 </h4>-->
-          <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
-      </div>
+           <h3>종합 분석 내용</h3>
+<!--      <div class="left_div">-->
+<!--          <div class="congruity">-->
+<!--            <h4 style="text-align:center; position:relative; left:60px;font-size:22px;">한국인 영양섭취권고 기준 대비 일치도</h4>-->
+<!--          <br><br>-->
+<!--          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{diet_list[0]['thisweek'][0][0][0][4]}}%</span>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--           <div class="left_div right_div">-->
+<!--               <div class="graphs graph_1">-->
+<!--        <div id="chartContainer" style="height: 300px; width: 100%;">-->
+
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--           </div>-->
+<!--    <div class="table_con">-->
+
+<!--        <div class="graphs graph_3">-->
+<!--&lt;!&ndash;        <h4>총 당류 </h4>&ndash;&gt;-->
+<!--          <div id="chartContainer3" style="height: 300px; width: 100%;"></div>-->
+<!--      </div>-->
 
 
-      <div class="graphs graph_2">
-<!--        <h4>나트륨 수준</h4>-->
-          <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-      </div>
+<!--      <div class="graphs graph_2">-->
+<!--          <div id="chartContainer2" style="height: 300px; width: 100%;"></div>-->
+<!--      </div>-->
+<!--        <div class="diet_info">-->
+<!--        </div>-->
+<!--    </div>-->
 
 
-        <div class="diet_info">
-<!--                <p class="diet_list"><br><br><br>-->
-<!--            {{diet_list[0][0]['thisweek'][0][0]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][1][1]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][2][2]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][3][3]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][4][4]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][5][5]}}<br>-->
-<!--            {{diet_list[0][0]['thisweek'][6][6]}}-->
-<!--        </p>-->
-        </div>
-    </div>
-
-
-  </div>
+<!--  </div>-->
+   </div>
    </div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
