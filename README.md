@@ -12,5 +12,5 @@
 
 <br><br>
 MAIN PAGE
-![mainP](./img/mainP.PNG)
+![mainp](./img/mainp.PNG)
 
