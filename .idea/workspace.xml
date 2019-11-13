@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc9fac08-5b19-4d08-bdfc-eccbb88c5350" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/메인페이지.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/서브페이지.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Main.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/mainpage.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/메인페이지.PNG" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/analysis.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/analysis.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/analysis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/foodimg/현미밥.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/foodimg/현미밥.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/foodimg/톳나물무침.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/foodimg/톳나물무침.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/result.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/result.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/diet_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diet_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

@@ -48,6 +48,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 });
 chart.render();
     var chart2 = new CanvasJS.Chart("chartContainer2", {
+    theme: "light2",
 	animationEnabled: true,
 	zoomEnabled: true,
 	title:{
@@ -79,6 +80,7 @@ chart.render();
 chart2.render();
 
 var chart3 = new CanvasJS.Chart("chartContainer3", {
+    theme: "light2",
 	animationEnabled: true,
 	zoomEnabled: true,
 	title:{
@@ -115,7 +117,55 @@ chart3.render();
 
 </head>
 <body>
+<div class="modal_back" style="display:none">
+    <div class="modal_up">
+        <div class="info_title"><h3>연령별 추천 영양제</h3>
+            <span class="pill calcium">칼슘 & 마그네슘</span><span class="pill omega3">오메가3</span><span class="pill vitamin">비타민</span>
+        <p style="padding-top:1px;">보조제로 복용하시면 건강에 도움이 되는 영양제를 추천해드립니다.</p>
+            <span class="close_pill">X</span>
+        </div>
+        <div class="info_in">
+            <span class="bt left_slide_pill"><i class="fas fa-arrow-circle-left"></i></span>
+            <div class="info_left">
+                <a href="{{all_pill[0]['cal_mag'][4]}}"><img src="{{all_pill[0]['cal_mag'][0]}}" ></a>
+                <div class="pilldetail">
+                <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["cal_mag"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["cal_mag"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["cal_mag"][2]}}</td></tr>
+                </table>
+                </div>
+            </div>
+            <div class="info_mid">
+                 <a href="{{all_pill[0]['omega'][4]}}"><img src="{{all_pill[0]['omega'][0]}}" ></a>
+                <div class="pilldetail">
+                <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["omega"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["omega"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["omega"][2]}}</td></tr>
+                </table>
+                </div>
+            </div>
+            <div class="info_right">
+                  <a href="{{all_pill[0]['sele'][4]}}"><img src="{{all_pill[0]['sele'][0]}}" ></a>
+                <div class="pilldetail">
+                    <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["sele"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["sele"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["sele"][2]}}</td></tr>
+                </table>
+
+                </div>
+            </div>
+             <span class="bt right_slide_pill"><i class="fas fa-arrow-circle-right"></i></span>
+        </div>
+     </div>
+</div>
+
+
  <header>
+
+
         <div id="logo">
             <a href="/"><img src="{{url_for('static', filename='images/logo_re.png')}}"></a>
         </div>
@@ -135,46 +185,57 @@ chart3.render();
 
    <div class="container_wrap">
        <div class="container">
-           <div class="guide_info"><h3 class="result_title">식단 분석 정보를 확인해보세요.</h3><h4 class="duration" >[ {{date}} ~ {{date2}} ]</h4>
+           <div class="guide_info">
+               <h3 class="result_title">식단 분석 정보를 확인해보세요.</h3><h4 class="duration" >[ {{date}} ~ {{date2}} ]</h4>
             <div class="btns">
              <span class="prev_week hover_span">지난주</span><span class="this_week hover_span">이번주</span><span class="nxt_week hover_span">다음주</span>
             </div>
+               <div class="perfect_service">
+                    <span class="hover_span review">총평보기</span><span class="hover_span suggest">맞춤제안</span>
+               </div>
            </div>
-           <h3>종합 분석 내용</h3>
-<!--      <div class="left_div">-->
-<!--          <div class="congruity">-->
-<!--            <h4 style="text-align:center; position:relative; left:60px;font-size:22px;">한국인 영양섭취권고 기준 대비 일치도</h4>-->
-<!--          <br><br>-->
-<!--          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{diet_list[0]['thisweek'][0][0][0][4]}}%</span>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--           <div class="left_div right_div">-->
-<!--               <div class="graphs graph_1">-->
-<!--        <div id="chartContainer" style="height: 300px; width: 100%;">-->
+    <div class="table_con">
 
-<!--        </div>-->
+        <div class="left_div">
+            <table>
+                <tr><td colspan="3" style="font-weight:bold; padding-bottom:10px;">* 식이고수 추천 식단 분석 키워드</td></tr>
+                <tr>
+                    <td><div class="point point1">균형 영양소</div></td>
+                    <td><div class="point point2">저염식</div></td>
+                    <td><div class="point point3">착한푸드</div></td>
+                </tr>
+            </table>
+          <div class="congruity">
+            <h4 style="text-align:left; position:relative; left:60px;font-size:17px;margin-top:10px;padding-left:65px;">* 한국인 영양섭취권고 기준 대비 일치도</h4>
+          <br><br>
+          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{diet_list[0]['thisweek'][0][0][0][4]}}%</span>
+<!--             sss-->
+          </div>
+      </div>
+           <div class="left_div right_div">
+               <div class="graphs graph_1">
+        <div id="chartContainer" style="height: 300px; width: 100%;">
 
-<!--      </div>-->
+        </div>
 
-<!--           </div>-->
-<!--    <div class="table_con">-->
+      </div>
 
-<!--        <div class="graphs graph_3">-->
-<!--&lt;!&ndash;        <h4>총 당류 </h4>&ndash;&gt;-->
-<!--          <div id="chartContainer3" style="height: 300px; width: 100%;"></div>-->
-<!--      </div>-->
+           </div>
+        <div class="graphs graph_3">
+<!--        <h4>총 당류 </h4>-->
+          <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+      </div>
 
 
-<!--      <div class="graphs graph_2">-->
-<!--          <div id="chartContainer2" style="height: 300px; width: 100%;"></div>-->
-<!--      </div>-->
+      <div class="graphs graph_2">
+          <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+      </div>
 <!--        <div class="diet_info">-->
 <!--        </div>-->
-<!--    </div>-->
+    </div>
 
 
-<!--  </div>-->
-   </div>
+  </div>
    </div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 

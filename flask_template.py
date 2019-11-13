@@ -13,6 +13,99 @@ fa = FontAwesome(app)
 global_result=[]
 check=[]
 
+
+# 영양제 크롤링
+import requests
+from bs4 import BeautifulSoup
+import re
+import pandas as pd
+from IPython.core.display import HTML
+
+
+# 이미지 링크를 html 태그로 바꿔주는 함수 작성
+def path_to_image_html(path):
+    return '<img src="' + path + '" width="60" >'
+
+
+def get_supplements(nutrition):
+    # 최종 저장 데이터 프레임을 위한 리스트
+    # list_for_df 에는 각각의 영양제 정보가 리스트 형태로 들어감
+    # 각각의 영양제 정보는 ["이미지", "제품명","평점(5점 만점)","가격(원)","링크"] 순서로 들어감
+    list_for_df = []
+
+    # 어린이용 영양제 제거를 위한 키워드 설정
+    kids_list = ["어린이", "유아", "영아", "kids", "baby", "infant", "toddler", "청소년", "성장기", "성장", "발달", "쑥쑥", "우리아이", "아이"]
+
+    # 검색하려는 영양소를 keyword로 설정
+    keyword = nutrition
+
+    # sr=2 옵션: 판매량이 많은 순서로 정렬
+    r = requests.get(f"https://kr.iherb.com/search?kw={keyword}&sr=2").text
+    b = BeautifulSoup(r, 'html.parser')
+
+    k = b.select("#FilteredProducts > div > div:nth-of-type(2) > div > div")
+    for i in k:
+        # 별점이 4점 미만이면 pass
+        raw_rate = i.select_one("a.stars")["title"]
+        rate = re.sub("[/].*", "", raw_rate)
+        rate = float(rate)
+        if rate < 4:
+            continue
+        else:
+            # print(f"4점을 넘긴 이 상품의 점수는 {rate}")
+
+            # 영양제 이름을 title로 받음
+            title = i.select_one("div.product-title").text
+            # title 명 앞뒤에 있는 개행문자 없애기(strip이용)
+            title = title.strip()
+            # 어린이용 영양제인 경우 pass
+            if any(x in title for x in kids_list):
+                continue
+            # print(title)
+
+            # 영양제 가격정보를 price로 받음
+            price = i.select_one("span.price ").text
+            price = re.sub("\D", "", price)
+            # print(price)
+
+            # 영양제 이미지 정보를 image로 받음
+            image = str(i.select_one("span.product-image > img")["src"])
+
+            # 영양제 링크 정보를 link로 받음
+            link = i.select_one("div.absolute-link-wrapper > a")["href"]
+            # print(link)
+
+            # 영양제 정보를 하나의 리스트에 담음
+            temp_list = [image, title, rate, price, link]
+
+            # 해당 영양제 정보(리스트)를 최종 리스트에 append 해줌
+            list_for_df.append(temp_list)
+
+            # 만약 최종 리스트의 길이가 5와 같거나 크면 크롤링을 중단함
+            if len(list_for_df) >= 5:
+                break
+    # supplement_df = pd.DataFrame(list_for_df)
+    # supplement_df.columns = ["이미지", "제품명", "평점(5점 만점)", "가격(원)", "링크"]
+    # pd.set_option('display.max_colwidth', -1)
+    return list_for_df
+
+pill_list={}
+all_pill=[]
+
+cal_mag = get_supplements("칼슘 마그네슘")
+ribo    = get_supplements("리보플라빈")
+sele    = get_supplements("셀레늄")
+coen    = get_supplements("코엔자임q10")
+omega   = get_supplements("오메가3")
+
+pill_list['cal_mag']=cal_mag[0]
+pill_list['ribo']=ribo[0]
+pill_list['sele']=sele[0]
+pill_list['coen']=coen[0]
+pill_list['omega']=omega[0]
+
+all_pill.append(pill_list)
+
 def parse_arg_from_requests(arg, **kwargs):
     parse = reqparse.RequestParser()
     parse.add_argument(arg, **kwargs)
@@ -555,12 +648,12 @@ def analysis():
         diet_list=request.args.get('diet_list')
         check_str = request.args.get('check_str')
         return render_template(
-            'analysis.html',  date=today, date2=dayslater, diet_list=global_result, check=check
+            'analysis.html',  date=today, date2=dayslater, diet_list=global_result, check=check, all_pill=all_pill
         )
     else:
         return render_template(
             'analysis.html', date=today, date2=dayslater, diet_list=global_result, day=days1,
-      check=check)
+      check=check, all_pill=all_pill)
 
 if __name__ == '__main__':
     app.run(debug=True)
