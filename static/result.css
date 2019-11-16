@@ -4,10 +4,87 @@
     font-family:'NanumSquare';
     margin:0 auto;
     }
+    .modal_recipe{
+        width:100%;
+        height:100%;
+        position:fixed;
+        background:rgba(0,0,0,0.6);
+        display:none;
+        z-index:100;
+    }
+    .recipe_in{
+        width:80%;
+        height:70%;
+        padding:20px;
+        box_sizing:border-box;
+        background:rgba(255,255,255,1);
+        margin-top:50px;
+        border-radius:5px;
+        box-shadow:4px 4px 4px black;
+    }
+    .recipe_top{
+        width:100%;
+        height:60px;
+        border-radius:5px;
+    }
+    .recipe_bottom{
+        width:100%;
+        height:350px;
+    }
+    .steps{
+        margin-left:80px;
+        margin-top:-30px;
+        font-weight:bolder;
+    }
+    .recipe_top> h3{
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .r_name{
+        padding-left:80px;
+        float:left;
+        font-weight:bolder;
+
+    }
+    .recipe_name{
+        float:left;
+    }
+    .ingred{
+        padding-left:80px;
+        float:left;
+        font-weight:bolder;
+        padding-left:10px;
+
+    }
+    .ingred_all{
+        float:left;
+    }
+    .recipe_close{
+        width:10px;
+        height:10px;
+        line-height:10px;
+        padding:5px;
+        border-radius:50%;
+        background-color:#ff3300;
+        box-shadow:2px 2px 2px dimgray;
+        position:relative;
+        left:700px;
+        top:-30px;
+        color:white;
+        cursor:pointer;
+
+    }
+    .recipe_table{
+        margin-top:10px;
+        width:900px;
+        height:300px;
+
+    }
     header{
     width:100%;
     height:100px;
     }
+
      #logo{
        width:260px;
        margin-left:130px;
@@ -306,4 +383,10 @@ margin-top:320px;
     color:#dimgray;
     font-weight:bolder;
     font-size:20px;
+}
+.food_names{
+    cursor:pointer
+}
+.food_names:hover{
+    color:#ff3300;
 }

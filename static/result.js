@@ -31,6 +31,12 @@ $(document).ready(function(){
     $(".protein_d").text("단백질: "+protein_d.toFixed(0)+"g ");
     $(".fat_d").text("지방: "+fat_d.toFixed(0)+"g ");
 
+    $(".food_names").on("click", function(){
+        $(".modal_recipe").show();
+    });
+    $(".recipe_close").on("click", function(){
+        $(".modal_recipe").hide();
+    });
 
 
 });

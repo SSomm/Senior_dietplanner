@@ -625,16 +625,43 @@ def select_diet():
         return render_template('diet_result.html', date=today, date2=dayslater, all_result=all_result, days=days1,
                                check_str=check_str, week=week)
 
-# 식단분석페이지
-# @app.route("/analysis", methods=['POST'])
-# def page():
-#     today = datetime.date.today()
-#     dayslater = today + datetime.timedelta(days=7)
-#     if request.method=="POST":
-#         return render_template('analysis.html', date=today, date2=dayslater)
-#     else:
-#         return render_template('analysis.html', date=today, date2=dayslater)
+def analysis_method(week):
+    days=[0,1,2,3,4,5,6]
+    meals=[0,1,2]
+    cosine=[]
+    nat=[]
+    sweet=[]
+    carbo=[]
+    protein=[]
+    fat=[]
 
+    for i in days:
+        for j in meals:
+            cosine.append(float(global_result[0][week][i][i][j][4]))
+            nat.append(float(global_result[0][week][i][i][j][10]))
+            sweet.append(float(global_result[0][week][i][i][j][9]))
+            protein.append(float(global_result[0][week][i][i][j][6]))
+            fat.append(float(global_result[0][week][i][i][j][7]))
+            carbo.append(float(global_result[0][week][i][i][j][8]))
+    com_cosine=sum(cosine)/len(cosine)
+    com_na=sum(nat)/len(nat)
+    com_sweet=sum(sweet)/len(sweet)
+    com_protein=sum(protein)/len(protein)
+    com_carbo=sum(carbo)/len(carbo)
+    com_fat=sum(fat)/len(fat)
+    com_rate=[com_protein, com_carbo, com_fat]
+    nutri_all=com_protein + com_carbo + com_fat
+    rating=[com_protein/nutri_all, com_carbo/nutri_all, com_fat/nutri_all]
+    answer=[{
+     'com_cosine':com_cosine,
+     'com_na':nat,
+     'com_sweet':sweet,
+     'com_rate':com_rate,
+     'rating':rating
+    }]
+    return (answer)
+
+# 식단분석페이지
 @app.route("/analysis")
 @app.route("/analysis", methods=['POST'])
 def analysis():
@@ -644,16 +671,24 @@ def analysis():
     dt = datetime.datetime.now()
     days1 = dt.weekday()
 
+# 식단 분석표 정보 출력을 위한 back 작업
+# 이번주 식단 분석 정보
+    this=analysis_method('thisweek')
+# 지난주 식단 분석 정보
+    pre = analysis_method('preweek')
+# 다음주 식단 분석 정보
+    next = analysis_method('nextweek')
+
     if request.method=="POST":
         diet_list=request.args.get('diet_list')
         check_str = request.args.get('check_str')
         return render_template(
-            'analysis.html',  date=today, date2=dayslater, diet_list=global_result, check=check, all_pill=all_pill
-        )
+            'analysis.html',  date=today, date2=dayslater, diet_list=global_result, check=check, all_pill=all_pill,
+        this=this, pre=pre, next=next)
     else:
         return render_template(
             'analysis.html', date=today, date2=dayslater, diet_list=global_result, day=days1,
-      check=check, all_pill=all_pill)
+      check=check, all_pill=all_pill, this=this, pre=pre, next=next)
 
 if __name__ == '__main__':
     app.run(debug=True)

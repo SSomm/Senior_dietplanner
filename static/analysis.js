@@ -6,4 +6,11 @@ $(document).ready(function(){
         $(".modal_back").hide();
     });
 
+    $(".review").on("click", function(){
+        $(".modal_back_review").show();
+    });
+
+    $(".close_pill_review").on("click", function(){
+        $(".modal_back_review").hide();
+    });
 });

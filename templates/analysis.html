@@ -20,10 +20,29 @@
     <title>食의 고수</title>
     <script>
 window.onload = function() {
-<!--    var diet_list=JSON.stringify({{diet_list}}).replace('&#39;', '');-->
-<!--    var cos_sim=(parseFloat(diet_list[0][0]['thisweek'][0][0][0][4])+parseFloat(diet_list[0][0]['thisweek'][1][1][0][4])+parseFloat(diet_list[0][0]['thisweek'][2][2][0][4])+parseFloat(diet_list[0][0]['thisweek'][3][3][0][4])+parseFloat(diet_list[0][0]['thisweek'][4][4][0][4])+float(diet_list[0][0]['thisweek'][5][5][0][4])+parseFloat(diet_list[0][0]['thisweek'][6][6][0][4]))/7;-->
-    var cos_sim=0.98;
-    $('.final_sim').text('약 '+cos_sim.toFixed(2)*100+'%');
+    var cos_sim=$(".final_sim").text().replace('약', '').replace('%', '');
+    $('.final_sim').text('약 '+parseFloat(cos_sim).toFixed(2)*100+'%');
+    var protein ={{this[0]['rating'][0]}};
+    protein=protein.toFixed(2)*100;
+    var carbo ={{this[0]['rating'][1]}};
+    carbo = carbo.toFixed(2)*100;
+    var fat ={{this[0]['rating'][2]}};
+    fat=fat.toFixed(2)*100;
+    var sweet=new Array();
+    var nat=new Array();
+    var nat=[
+    {{this[0]['com_na'][0]}},
+    {{this[0]['com_na'][1]}},
+    {{this[0]['com_na'][2]}},
+    {{this[0]['com_na'][3]}},
+    {{this[0]['com_na'][4]}},
+    {{this[0]['com_na'][5]}},
+    {{this[0]['com_na'][6]}}];
+
+    for(var i=0;i<7;i++){
+        sweet.push({{this[0]['com_sweet'][i]}});
+<!--        nat.push({{this[0]['com_na'][i]}});-->
+    }
 var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	exportEnabled: true,
@@ -40,9 +59,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabelFontSize: 13,
 		indexLabel: "{label} - {y}%",
 		dataPoints: [
-			{ y: 51.08, label: "탄수화물" },
-			{ y: 27.34, label: "지방" },
-			{ y: 10.62, label: "단백질" },
+			{ y: carbo, label: "탄수화물" },
+			{ y: fat, label: "지방" },
+			{ y: protein, label: "단백질" },
 		]
 	}]
 });
@@ -56,8 +75,8 @@ chart.render();
 	},
 	axisX: {
 		title:"나트륨 수치",
-		minimum: 790,
-		maximum: 1500
+		minimum: 100,
+		maximum: 1000
 	},
 	axisY:{
 		title: "균형식단 기준",
@@ -67,13 +86,13 @@ chart.render();
 		type: "scatter",
 		toolTipContent: "<b>나트륨: </b>{x}mg<br/><b>균형 나트륨: </b>{y}mg",
 		dataPoints: [
-			{ x: 800, y: 350 },
-			{ x: 900, y: 450 },
-			{ x: 850, y: 450 },
-			{ x: 1250, y: 700 },
-			{ x: 1100, y: 650 },
-			{ x: 1350, y: 850 },
-			{ x: 1200, y: 900 },
+			{ x: nat[0], y: 900 },
+			{ x: nat[1], y: 900 },
+			{ x: nat[2], y: 900 },
+			{ x: nat[3], y: 900 },
+			{ x: nat[4], y: 900 },
+			{ x: nat[5], y: 900 },
+			{ x: nat[6], y: 900 },
 		]
 	}]
 });
@@ -88,8 +107,8 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 	},
 	axisX: {
 		title:"당류 함량",
-		minimum: 4,
-		maximum: 9
+		minimum: 0,
+		maximum: 8
 	},
 	axisY:{
 		title: "균형식단 기준",
@@ -99,13 +118,13 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 		type: "scatter",
 		toolTipContent: "<b>총 당 함량: </b>{x}mg<br/><b>기준 당량: </b>{y}mg",
 		dataPoints: [
-			{ x: 8.4, y: 9 },
-			{ x: 5.9, y: 7 },
-			{ x: 6.5, y: 7 },
-			{ x: 4.7, y: 6.2 },
-			{ x: 6.5, y: 7.3 },
-			{ x: 4.9, y: 6.7 },
-			{ x: 5.2, y: 7 },
+			{ x: sweet[0], y: 9 },
+			{ x: sweet[1], y: 7 },
+			{ x: sweet[2], y: 7 },
+			{ x: sweet[3], y: 6.2 },
+			{ x: sweet[4], y: 7.3 },
+			{ x: sweet[5], y: 6.7 },
+			{ x: sweet[6], y: 7 },
 		]
 	}]
 });
@@ -162,6 +181,42 @@ chart3.render();
      </div>
 </div>
 
+<div class="modal_back_review" style="display:none">
+    <div class="modal_up_review">
+         <div class="info_title_review"><h3>식단 종합 평가</h3>
+<!--            <span class="pill calcium">칼슘 & 마그네슘</span><span class="pill omega3">오메가3</span><span class="pill vitamin">비타민</span>-->
+        <p style="padding-top:1px;">맞춤 식단 종합 평가 결과입니다. </p>
+            <span class="close_pill_review">X</span>
+        </div>
+        <div class="info_content">
+            <div class="con_points">
+<!--                <span>영양 균형점수</span>-->
+                <div class="circle1">영양균형점수</div>
+<!--                <span>영양 균형점수</span>-->
+                <div class="circle1 circle2">영양관리점수</div>
+<!--                <span>영양 균형점수</span>-->
+                <div class="circle1 circle3">메뉴 다양성</div>
+            </div>
+            <div class="indi">
+                <div class="indi_top">
+                <div class="stars">식단 만족도</div>
+                <div class="thumbsup"><i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i></div>
+                <span class="review_btns eval">평가하기</span><span class="review_btns modify">수정하기</span>
+                </div>
+            </div>
+<!--           <table class="info_table">-->
+<!--               <tr><td colspan="2">영양 균형도 정보</td></tr>-->
+<!--               <tr><td>칼로리 정보</td><td>칼로리 입니다. </td></tr>-->
+<!--               <tr><td>영양 균형도</td><td>퍼센트 입니다. </td></tr>-->
+<!--               <tr><td>당류 함량 정보</td><td>당류 입니다. </td></tr>-->
+<!--               <tr><td>나트륨 함량 정보</td><td>나트륨입니다.</td></tr>-->
+<!--               <tr><td colspan="2">총평</td></tr>-->
+<!--               <tr><td colspan="2">총평 정보입니다. </td></tr>-->
+<!--           </table>-->
+        </div>
+     </div>
+</div>
+
 
  <header>
 
@@ -208,7 +263,7 @@ chart3.render();
           <div class="congruity">
             <h4 style="text-align:left; position:relative; left:60px;font-size:17px;margin-top:10px;padding-left:65px;">* 한국인 영양섭취권고 기준 대비 일치도</h4>
           <br><br>
-          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{diet_list[0]['thisweek'][0][0][0][4]}}%</span>
+          <span class='final_sim' style="position:relative; left:170px;font-size:35px;font-weight:bolder;color:#ff3300;"> 약 {{this[0]['com_cosine']}}%</span>
 <!--             sss-->
           </div>
       </div>
