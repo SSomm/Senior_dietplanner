@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc9fac08-5b19-4d08-bdfc-eccbb88c5350" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/db.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/review_modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbModule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_template.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/analysis.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/analysis.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/analysis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/result.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/result.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/analysis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/diet_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diet_result.html" afterDir="false" />
     </list>
@@ -18,11 +18,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TMLaCpA7vknsHCU2AFH5uKI0ta" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">

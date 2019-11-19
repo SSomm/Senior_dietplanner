@@ -1,14 +1,32 @@
 from flask import Flask, render_template, redirect, url_for
 from dateutil.relativedelta import relativedelta
 import datetime
+import pymysql
 from flask import request
 from flask_fontawesome import FontAwesome
 from flask_restful import reqparse
 import os
+import yaml
 import re
 import pandas as pd
+from flask_mysqldb import MySQL
 
+# db=yaml.load(open('db.yaml'))
 app = Flask(__name__)
+# MySQL Connection 연결
+
+conn = pymysql.connect(host='localhost', user='root', password='1234',
+                       db='senior_dietplanner', charset='utf8')
+# Connection 으로부터 Cursor 생성
+
+def recipe_select(name):
+    curs = conn.cursor()
+    sql=("select * from recipe where r_name=='"+name+"'")
+    curs.execute(sql)
+    rows=curs.fetchall()
+    curs.close()
+    return rows
+
 fa = FontAwesome(app)
 global_result=[]
 check=[]

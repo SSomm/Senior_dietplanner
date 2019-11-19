@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <link href="{{ url_for('static', filename='review_modal.css') }}" rel="stylesheet" type="text/css">
+    <title>review</title>
+</head>
+<body>
+<div class="review_back">
+    <div class="review_inmodal">
+        <span class="review_close">X</span>
+        <h3 class="diet_eval_title">식단 만족도 평가 <i class="fas fa-utensils" style="color:#ff3300; font-size:20"></i> </h3>
+        <table class="evaluation_t">
+            <tr><td><span style="font-weight:bold;">기호 만족도</span></td>
+                <td>
+                    <input type="radio" value="0" name="satisfy" class="satis_option"> 매우 불만족
+                    <input type="radio" value="1" name="satisfy" class="satis_option"> 불만족
+                    <input type="radio" value="2" name="satisfy" class="satis_option"> 보통
+                    <input type="radio" value="3" name="satisfy" class="satis_option"> 만족
+                    <input type="radio" value="4" name="satisfy" class="satis_option"> 매우만족
+                </td>
+            </tr>
+            <tr><td><span style="font-weight:bold;line-height:15px;">기타<br> 식단 후기</span></td>
+                <td>
+                    <textarea class="satisfy_text" >식단 평가 내용을 자유롭게 적어주세요.</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="{{url_for('static', filename='images/logo_re.png')}}" width="90px"></td>
+                <td><input type="submit" value="평가완료" class="review_com">
+                    <button class="review_cancel"><span>취소하기</span></button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

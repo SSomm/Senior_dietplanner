@@ -136,6 +136,7 @@ chart3.render();
 
 </head>
 <body>
+{% include 'review.html' %}
 <div class="modal_back" style="display:none">
     <div class="modal_up">
         <div class="info_title"><h3>연령별 추천 영양제</h3>
@@ -183,36 +184,79 @@ chart3.render();
 
 <div class="modal_back_review" style="display:none">
     <div class="modal_up_review">
-         <div class="info_title_review"><h3>식단 종합 평가</h3>
+         <div class="info_title_review"><h3><i class="fas fa-utensils" style="color:#ff3300; font-size:20px;"></i> 식단 종합 평가</h3>
 <!--            <span class="pill calcium">칼슘 & 마그네슘</span><span class="pill omega3">오메가3</span><span class="pill vitamin">비타민</span>-->
-        <p style="padding-top:1px;">맞춤 식단 종합 평가 결과입니다. </p>
+        <p style="padding-top:4px; font-size:15px; color:dimgray; padding-left:10px;">맞춤 식단 종합 평가 결과입니다. </p>
             <span class="close_pill_review">X</span>
         </div>
         <div class="info_content">
             <div class="con_points">
 <!--                <span>영양 균형점수</span>-->
-                <div class="circle1">영양균형점수</div>
-<!--                <span>영양 균형점수</span>-->
-                <div class="circle1 circle2">영양관리점수</div>
-<!--                <span>영양 균형점수</span>-->
-                <div class="circle1 circle3">메뉴 다양성</div>
+                <div class="eval_points evalp1">
+                     <div class="circle circle1">영양균형점수</div>
+                     <span class="result_point r_pointa"></span>
+                </div>
+                <div class="eval_points evalp2">
+                    <div class="circle circle2">영양관리점수</div>
+                    <span class="result_point r_pointb"></span>
+                </div>
+
+                <div class="eval_points evalp3">
+                     <div class="circle circle3">메뉴 다양성</div>
+                    <span class="result_point r_pointc"></span>
+                </div>
             </div>
             <div class="indi">
                 <div class="indi_top">
                 <div class="stars">식단 만족도</div>
-                <div class="thumbsup"><i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-up"></i></div>
+                <div class="thumbsup">
+                    <i class="far fa-thumbs-up"></i>
+                    <i class="far fa-thumbs-up"></i>
+                    <i class="far fa-thumbs-up"></i>
+                    <i class="far fa-thumbs-up"></i>
+                </div>
                 <span class="review_btns eval">평가하기</span><span class="review_btns modify">수정하기</span>
                 </div>
+                <div>
+                    <p class="default_guide" style="font-size:15px; line-height:25px; width:90%;margin-left:0;">
+                       식단을 평가해주세요.<br>
+                        식의 고수에서는 여러분의 식단 만족도 평가에 따른 개인 기호 맞춤 식단 추천 기능을 준비중입니다.
+                    </p>
+                </div>
             </div>
-<!--           <table class="info_table">-->
-<!--               <tr><td colspan="2">영양 균형도 정보</td></tr>-->
-<!--               <tr><td>칼로리 정보</td><td>칼로리 입니다. </td></tr>-->
-<!--               <tr><td>영양 균형도</td><td>퍼센트 입니다. </td></tr>-->
-<!--               <tr><td>당류 함량 정보</td><td>당류 입니다. </td></tr>-->
-<!--               <tr><td>나트륨 함량 정보</td><td>나트륨입니다.</td></tr>-->
-<!--               <tr><td colspan="2">총평</td></tr>-->
-<!--               <tr><td colspan="2">총평 정보입니다. </td></tr>-->
-<!--           </table>-->
+
+            <div class="report">
+                <div class="report_in">
+                <h4>[ {{date}} ~ {{date2}} ] 기준 식단 영양 정보 분석 결과</h4>
+                    <br>
+                    <br>
+                    <div class="nutri_first">
+                        <i class="fas fa-check-circle"></i> <span style="font-weight:bold;">영양 균형도</span><br>
+                        <p>
+                            탄수화물, 단백질, 지방 비율은 각각 60-70%, 10-20%, 10%이하가 적절합니다.
+                            본 식단은 영양 균형도 면에서 적합한 식단입니다.
+                        </p>
+                    </div>
+                    <br>
+                    <div>
+                        <i class="fas fa-check-circle"></i> <span style="font-weight:bold;">식품군의 다양성</span><br>
+                        <p>
+                            식단은 각 식품군을 균형적으로 담고 있어야 합니다.
+                            본 식단은 곡류, 육류, 야채류, 과일류를 균형있게 반영하고 있습니다.
+                        </p>
+                    </div>
+                    <br>
+                    <div>
+                        <i class="fas fa-check-circle"></i> <span style="font-weight:bold;">영양 적정수준</span><br>
+                        <p>
+                            한국인 식단에서 당류, 나트륨 적정도는 각각 10g 이하, 나트륨은 하루 기준 2500mg 입니다.<br>
+                            본 식단은 두 가지 기준을 넉넉히 만족하는 것으로, 높은 적정도를 보입니다.
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
      </div>
 </div>

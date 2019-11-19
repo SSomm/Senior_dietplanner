@@ -50,6 +50,7 @@
  .info_title_review{
     width:100%;
     height:50px;
+    padding-left:20px;
 
  }
  .close_pill{
@@ -100,24 +101,84 @@
     margin:0 auto;
     width:1000px;
     height:426px;
+
+ }
+ .report{
+    width:100%;
+    height:270px;
+    position:relative;
+    top:170px;
+ }
+ .report_in{
+    width:95%;
+    height:98%;
+    margin: 0 auto;
+    position:relative;
+    top:10px;
+    border:0.3px dimgray;
+    box-shadow:2px 2px 4px dimgray;
+    border-radius:5px;
+    padding:20px;
+    box-sizing:border-box;
+    background-color:#f5f5dc;
+ }
+ .report_in>h4{
+    position:relative;
+    top:-80px;
+    left:-460px;
+    text-shadow:1px 1px 3px lightgray;
+    text-align:center;
+ }
+ .report_in>div{
+    position:relative;
+    top:-80px;
+    width:100%;
+    height:17%;
+ }
+ .report_in>div>p{
+    padding:3px;
+    font-size:15px;
+    line-height:22px;
+  }
+.fa-check-circle{
+    color:#ff3300;
  }
  .con_points{
     width:48%;
-    height:426px;
+    height:140px;
     padding:20px;
     padding-left:50px;
     box-sizing:border-box;
     float:left;
+    top:30px;
  }
+
  .indi{
     width:50%;
-    height:426px;
+    height:100px;
     float:left;
  }
  .indi_top{
-    padding-top:50px;
+    padding-top:30px;
  }
- .circle1{
+ .eval_points{
+    width:120px;
+    height:150px;
+    position:relative;
+    float:left;
+ }
+ .result_point{
+    width:80px;
+    height:20px;
+    position:relative;
+    top:20px;
+    left:30px;
+    text-align:center;
+    color:red;
+    font-size:23px;
+    font-weight:bold;
+ }
+ .circle{
     width:100px;
     height:100px;
     margin-right:10px;
@@ -127,6 +188,11 @@
     background-color:#ff3300;
     color:white;
     float:left;
+    box-shadow:2px 2px 4px dimgray;
+ }
+ .circle:hover{
+    transform: scaleX( 1.1 ) scaleY( 1.1 );
+    transition: all 1s;
  }
   .circle2{
     width:100px;
@@ -157,7 +223,7 @@
     font-size:20px;
  }
  .thumbsup{
-    color:yellow;
+    color:rgba(255,102,0,1);
     font-size:20px;
  }
  .review_btns{
@@ -172,6 +238,7 @@
     top:-23px;
     left:220px;
     font-size:13px;
+    cursor:pointer;
  }
  .info_in>div{
     float:left;
@@ -223,7 +290,6 @@
     height:25px;
     padding:7px;
     border-radius:5px;
-    background-color:pink;
     position:relative;
     top:-20px;
     left:170px;
@@ -353,6 +419,11 @@ h3,h4{
    color:white;
    box-shadow:2px 2px 4px #909090;
    cursor:pointer;
+}
+.point:hover{
+    transform: scaleX( 1.1 ) scaleY( 1.1 );
+    transition: all 1s;
+
 }
 .point1{
     background-color:#ffa500;
@@ -570,11 +641,8 @@ h3,h4{
     width:880px;
     margin:0 auto;
     padding:10px;
-    background-color:green;
     margin-top:15px;
-
 }
-
 .graphs{
     width:270px;
     height:350px;

@@ -13,7 +13,7 @@
         z-index:100;
     }
     .recipe_in{
-        width:80%;
+        width:90%;
         height:70%;
         padding:20px;
         box_sizing:border-box;
@@ -24,15 +24,87 @@
     }
     .recipe_top{
         width:100%;
-        height:60px;
+        height:40px;
         border-radius:5px;
     }
     .recipe_bottom{
         width:100%;
-        height:350px;
+        height:370px;
+
+    }
+    .recipe_table{
+        margin-top:10px;
+        width:1200px;
+        height:300px;
+
+    }
+    .recipeimg{
+        width:30%;
+        padding-top:10px;
+        padding-bottom:20px;
+        height:110%;
+        border-radius:5px;
+        box-shadow:2px 2px 4px dimgray;
+        overflow:hidden;
+        float:left;
+         margin-right:30px;
+    }
+    .recipeimg>img{
+        width:100%;
+        height:100%;
+        border-radius:10px;
+        padding:10px;
+        padding-top:10px;
+        padding-right:10px;
+        box-sizing:border-box;
+
+    }
+    .steps_all{
+        width:750px;
+        height:110%;
+        position:relative;
+        float:left;
+        overflow:scroll;
+        overflow-x:hidden;
+
+    }
+    .reci_steps{
+        width:700px;
+        border-radius:5px;
+        height:110px;
+        float:left;
+        margin-top:5px;
+        border:0.3px solid dimgray;
+        box-shadow:2px 2px 4px dimgray;
+        padding:15px;
+        margin-bottom:5px;
+    }
+    .reci_1{
+        margin-top:10px;
+    }
+    .reci_steps>img{
+        border-radius:5px;
+        pading:5px;
+        box-shadow:2px 2px 4px dimgray;
+    }
+
+    .details{
+        padding-left:30px;
+    }
+    .stepnum{
+        background-color:dimgray;
+        box-shadow:2px 2px 2px #eee;
+        color:white;
+        width:50px;
+        padding:5px;
+        position:relative;
+        border-radius:5px;
+        top:-40px;
+        margin-right:5px;
     }
     .steps{
-        margin-left:80px;
+        margin-left:30px;
+
         margin-top:-30px;
         font-weight:bolder;
     }
@@ -41,7 +113,7 @@
         margin-bottom:10px;
     }
     .r_name{
-        padding-left:80px;
+        padding-left:10px;
         float:left;
         font-weight:bolder;
 
@@ -52,15 +124,18 @@
     .ingred{
         padding-left:80px;
         float:left;
+        padding-top:10px;
         font-weight:bolder;
         padding-left:10px;
 
     }
     .ingred_all{
         float:left;
+        padding-top:10px;
     }
     .recipe_close{
         width:10px;
+        padding-top:10px;
         height:10px;
         line-height:10px;
         padding:5px;
@@ -68,18 +143,13 @@
         background-color:#ff3300;
         box-shadow:2px 2px 2px dimgray;
         position:relative;
-        left:700px;
+        left:1100px;
         top:-30px;
         color:white;
         cursor:pointer;
 
     }
-    .recipe_table{
-        margin-top:10px;
-        width:900px;
-        height:300px;
 
-    }
     header{
     width:100%;
     height:100px;
@@ -290,12 +360,12 @@ img{
 
 }
 .btns{
-margin:0 auto;
-width:700px;
-height:50px;
-position:relative;
-text-align:center;
-margin-top:320px;
+    margin:0 auto;
+    width:700px;
+    height:50px;
+    position:relative;
+    text-align:center;
+    margin-top:320px;
 }
 .btns_wrap{
     width:275px;
