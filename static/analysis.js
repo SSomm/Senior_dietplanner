@@ -66,6 +66,19 @@ $(document).ready(function(){
         $(".r_pointc").text("");
     });
 
+    //영양제 클릭 크롤링 조건 변경
+    $(".pill").on("click", function(){
+        var kind=$(this).data("pill");
+
+        $.ajax({
+
+
+        });
+
+        location.href='/analysis?pill='+kind;
+
+    });
+
 
 
 });

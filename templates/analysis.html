@@ -140,12 +140,46 @@ chart3.render();
 <div class="modal_back" style="display:none">
     <div class="modal_up">
         <div class="info_title"><h3>연령별 추천 영양제</h3>
-            <span class="pill calcium">칼슘 & 마그네슘</span><span class="pill omega3">오메가3</span><span class="pill vitamin">비타민</span>
+            <span class="pill calcium" data-pill="칼슘 마그네슘">칼슘 & 마그네슘</span><span class="pill omega3" data-pill="오메가3">오메가3</span>
+            <span class="pill ribo" data-pill="리보플라빈">리보플라빈</span><span class="pill selenium" data-pill="셀레늄">셀레늄</span>
+            <span class="pill coenzime" data-pill="코엔자임q10">코엔자임q10</span>
         <p style="padding-top:1px;">보조제로 복용하시면 건강에 도움이 되는 영양제를 추천해드립니다.</p>
             <span class="close_pill">X</span>
         </div>
         <div class="info_in">
             <span class="bt left_slide_pill"><i class="fas fa-arrow-circle-left"></i></span>
+                {% if (all_pill[0]['target1']) %}
+                <div class="info_left">
+                <a href="{{all_pill[0]['target1'][4]}}"><img src="{{all_pill[0]['target1'][0]}}" ></a>
+                <div class="pilldetail">
+                <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["target1"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["target1"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["target1"][2]}}</td></tr>
+                </table>
+                </div>
+            </div>
+            <div class="info_mid">
+                 <a href="{{all_pill[0]['target2'][4]}}"><img src="{{all_pill[0]['target2'][0]}}" ></a>
+                <div class="pilldetail">
+                <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["target2"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["target2"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["target2"][2]}}</td></tr>
+                </table>
+                </div>
+            </div>
+            <div class="info_right">
+                  <a href="{{all_pill[0]['target3'][4]}}"><img src="{{all_pill[0]['target3'][0]}}" ></a>
+                <div class="pilldetail">
+                    <table>
+                    <tr><td colspan="2" class="pr_name">{{all_pill[0]["target3"][1]}}</td></tr>
+                    <tr><td >가격</td><td class="pr_price">{{all_pill[0]["target3"][3]}}원</td></tr>
+                    <tr><td>평점</td><td class="pr_review">{{all_pill[0]["target3"][2]}}</td></tr>
+                </table>
+                </div>
+            </div>
+                {% else %}
             <div class="info_left">
                 <a href="{{all_pill[0]['cal_mag'][4]}}"><img src="{{all_pill[0]['cal_mag'][0]}}" ></a>
                 <div class="pilldetail">
@@ -177,8 +211,10 @@ chart3.render();
 
                 </div>
             </div>
+            {% endif %}
              <span class="bt right_slide_pill"><i class="fas fa-arrow-circle-right"></i></span>
         </div>
+
      </div>
 </div>
 

@@ -681,7 +681,7 @@ def analysis_method(week):
 
 # 식단분석페이지
 @app.route("/analysis")
-@app.route("/analysis", methods=['POST'])
+@app.route("/analysis", methods=['POST', 'GET'])
 def analysis():
     # diet_list=request.post['diet_list']
     today = datetime.date.today()
@@ -697,16 +697,31 @@ def analysis():
 # 다음주 식단 분석 정보
     next = analysis_method('nextweek')
 
-    if request.method=="POST":
+    if (request.method=="POST"):
         diet_list=request.args.get('diet_list')
         check_str = request.args.get('check_str')
         return render_template(
-            'analysis.html',  date=today, date2=dayslater, diet_list=global_result, check=check, all_pill=all_pill,
-        this=this, pre=pre, next=next)
+            'analysis.html',  date=today, date2=dayslater, diet_list=diet_list, check=check_str, all_pill=all_pill,
+             this=this, pre=pre, next=next)
+    elif (request.method == 'GET'):
+        pill = request.args.get('pill')
+        get_pill_list = {}
+        get_all_pill = []
+        crawling_list = get_supplements(pill)
+
+        get_pill_list['target1'] = crawling_list[0]
+        get_pill_list['target2'] = crawling_list[1]
+        get_pill_list['target3'] = crawling_list[2]
+        get_all_pill.append(get_pill_list)
+
+        return render_template(
+            'analysis.html', date=today, date2=dayslater, diet_list=global_result, day=days1,
+            check=check, all_pill=get_all_pill, this=this, pre=pre, next=next)
     else:
         return render_template(
             'analysis.html', date=today, date2=dayslater, diet_list=global_result, day=days1,
-      check=check, all_pill=all_pill, this=this, pre=pre, next=next)
+            check=check, all_pill=all_pill, this=this, pre=pre, next=next)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
